@@ -11,6 +11,7 @@ public enum PlayerState
 
 public class PlayerMovement : MonoBehaviour
 {
+    float strength = 1f;
     public PlayerState currentState;
     public float speed = 4f;
     Rigidbody2D rb;
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         currentState = PlayerState.Walk;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        //anim.SetFloat("moveX", 0f);
+        anim.SetFloat("moveX", 0f);
         anim.SetFloat("moveY", -1);
     }
 
@@ -62,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            rb.velocity = Vector2.zero;
             anim.SetBool("moving", false);
         }
     }
@@ -69,5 +71,13 @@ public class PlayerMovement : MonoBehaviour
     void MoveCharacter()
     {
         rb.MovePosition((Vector2)transform.position + moveDir.normalized * speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.GetComponent<IDamageable<float>>() != null)
+        {
+            other.GetComponent<IDamageable<float>>().TakeDamage(strength);
+        }
     }
 }
