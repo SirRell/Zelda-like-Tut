@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LogEnemy : Enemy
 {
-    Rigidbody2D rb;
     Transform target;
     public float chaseRadius;
     public float attackRadius;
@@ -16,12 +15,12 @@ public class LogEnemy : Enemy
         base.Start();
         homePosition = transform.position;
         target = GameObject.FindWithTag("Player").transform;
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        CheckDistance();
+        if (target.gameObject.activeInHierarchy)
+            CheckDistance();
     }
 
     void CheckDistance()
@@ -29,10 +28,25 @@ public class LogEnemy : Enemy
         float distFromTarget = Vector2.Distance(target.position, transform.position);
         if (distFromTarget <= chaseRadius && distFromTarget > attackRadius)
         {
-            if (currentState != EnemyState.Stagger)
+            if(currentState == EnemyState.Idle)
+            {
+                anim.SetTrigger("Wakeup");
+                ChangeState(EnemyState.Walk);
+            }
+            else if (currentState == EnemyState.Walk)
             {
                 Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                UpdateAnimation((temp - (Vector2)transform.position).normalized);
                 rb.MovePosition(temp);
+            }
+        }
+        else if(distFromTarget < attackRadius)
+        {
+            if(currentState == EnemyState.Walk)
+            {
+                ChangeState(EnemyState.Attack);
+                target.GetComponent<IDamageable<float, Enemy>>().TakeDamage(baseAttack, GetComponent<Enemy>());
+                ChangeState(EnemyState.Walk);
             }
         }
         else if (distFromTarget > chaseRadius)
@@ -41,7 +55,29 @@ public class LogEnemy : Enemy
             {
                 Vector2 temp = Vector2.MoveTowards(transform.position, homePosition, moveSpeed * Time.deltaTime);
                 rb.MovePosition(temp);
+
+                if ((Vector2)transform.position == homePosition && currentState != EnemyState.Idle)
+                {
+                    anim.SetTrigger("Sleep");
+                    ChangeState(EnemyState.Idle);
+                    return;
+                }
+                UpdateAnimation((temp - (Vector2)transform.position).normalized);
             }
         }
+
+
+    }
+
+    void UpdateAnimation(Vector2 direction)
+    {
+        anim.SetFloat("moveX", direction.x);
+        anim.SetFloat("moveY", direction.y);
+
+        //if(target.gameObject.activeInHierarchy && currentState != EnemyState.Idle)
+        //{
+        //    anim.SetTrigger("Sleep");
+        //    ChangeState(EnemyState.Idle);
+        //}
     }
 }

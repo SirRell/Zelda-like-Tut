@@ -163,11 +163,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef62f7b686d63b438d141e55121d9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
-  enemyName: Larry the Log
+  maxHealth: 2
+  currHealth: 0
   baseAttack: 1
   moveSpeed: 2
-  chaseRadius: 4
+  chaseRadius: 3
   attackRadius: 0.96
 --- !u!114 &2505416593552953627
 MonoBehaviour:

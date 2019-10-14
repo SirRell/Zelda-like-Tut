@@ -66,9 +66,12 @@ public class PlayerMovement : Player
     //When attacking
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.GetComponent<IDamageable<float>>() != null)
+        if(currentState == PlayerState.Attack)
         {
-            other.GetComponent<IDamageable<float>>().TakeDamage(strength);
+            if(other.GetComponent<IDamageable<float, Player>>() != null)
+            {
+                other.GetComponent<IDamageable<float, Player>>().TakeDamage(strength, GetComponent<Player>());
+            }
         }
     }
 

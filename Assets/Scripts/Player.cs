@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable<float>
+public class Player : MonoBehaviour, IDamageable<float, Enemy>
 {
     public enum PlayerState
     {
@@ -14,7 +14,8 @@ public class Player : MonoBehaviour, IDamageable<float>
 
     protected Rigidbody2D rb;
     public PlayerState currentState;
-    public float health = 5f;
+    public float maxHealth = 5f;
+    public float currHealth;
     public float strength = 1f;
 
 
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour, IDamageable<float>
     {
         ChangeState(PlayerState.Walk);
         rb = GetComponent<Rigidbody2D>();
+        currHealth = maxHealth;
 
     }
 
@@ -30,10 +32,10 @@ public class Player : MonoBehaviour, IDamageable<float>
         gameObject.SetActive(false);
     }
 
-    public void TakeDamage(float damageTaken)
+    public void TakeDamage(float damageTaken, Enemy damageGiver)
     {
-        health -= damageTaken;
-        if (health <= 0f)
+        currHealth -= damageTaken;
+        if (currHealth <= 0f)
         {
             Destroy();
         }
@@ -42,7 +44,7 @@ public class Player : MonoBehaviour, IDamageable<float>
             Knockback kB = GetComponent<Knockback>();
             if (kB != null)
             {
-                StartCoroutine(kB.KnockBack(kB.otherTransform));
+                StartCoroutine(kB.KnockBack(damageGiver.gameObject.transform));
                 GetComponent<PlayerMovement>().ChangeState(PlayerState.Stagger);
             }
         }

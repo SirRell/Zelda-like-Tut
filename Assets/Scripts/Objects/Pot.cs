@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pot : MonoBehaviour, IDamageable<float>, IDestroyable
+public class Pot : MonoBehaviour, IDamageable<float, Player>
 {
     Animator anim;
 
@@ -11,7 +11,7 @@ public class Pot : MonoBehaviour, IDamageable<float>, IDestroyable
         anim = GetComponent<Animator>();
     }
 
-    public void TakeDamage(float damageTaken)
+    public void TakeDamage(float damageTaken, Player damageGiver)
     {
         Destroy();
         anim.enabled = true;
