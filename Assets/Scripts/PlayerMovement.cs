@@ -2,26 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState
+public class PlayerMovement : Player
 {
-    Walk,
-    Attack,
-    Interact
-}
-
-public class PlayerMovement : MonoBehaviour
-{
-    float strength = 1f;
-    public PlayerState currentState;
     public float speed = 4f;
-    Rigidbody2D rb;
     Vector2 moveDir;
     Animator anim;
 
-    private void Start()
+    protected override void Start()
     {
-        currentState = PlayerState.Walk;
-        rb = GetComponent<Rigidbody2D>();
+        base.Start();
         anim = GetComponent<Animator>();
         anim.SetFloat("moveX", 0f);
         anim.SetFloat("moveY", -1);
@@ -32,9 +21,10 @@ public class PlayerMovement : MonoBehaviour
         moveDir = Vector2.zero;
         moveDir.x = Input.GetAxisRaw("Horizontal");
         moveDir.y = Input.GetAxisRaw("Vertical");
-        if(Input.GetButtonDown("Attack") && currentState == PlayerState.Walk)
+        if(Input.GetButtonDown("Attack") && currentState != PlayerState.Stagger)
         {
-            StartCoroutine(AttackCo());
+            if(currentState != PlayerState.Attack)
+                StartCoroutine(AttackCo());
         }
         else if(currentState == PlayerState.Walk)
         {
@@ -45,11 +35,11 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator AttackCo()
     {
         anim.SetBool("attacking", true);
-        currentState = PlayerState.Attack;
+        ChangeState(PlayerState.Attack);
         yield return null;
         anim.SetBool("attacking", false);
         yield return new WaitForSeconds(.33f);
-        currentState = PlayerState.Walk;
+        ChangeState(PlayerState.Walk);
     }
 
     void UpdateAnimation()
@@ -73,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition((Vector2)transform.position + moveDir.normalized * speed * Time.deltaTime);
     }
 
+    //When attacking
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.GetComponent<IDamageable<float>>() != null)
@@ -80,4 +71,5 @@ public class PlayerMovement : MonoBehaviour
             other.GetComponent<IDamageable<float>>().TakeDamage(strength);
         }
     }
+
 }

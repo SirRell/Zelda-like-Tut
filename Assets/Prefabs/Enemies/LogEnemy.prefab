@@ -112,11 +112,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239355983864286889}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &7724014276873439120
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -167,10 +167,8 @@ MonoBehaviour:
   enemyName: Larry the Log
   baseAttack: 1
   moveSpeed: 2
-  target: {fileID: 0}
   chaseRadius: 4
   attackRadius: 0.96
-  homePosition: {x: 0, y: 0}
 --- !u!114 &2505416593552953627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,5 +181,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d345907ec8e5bcd48a03708ab5d121c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 8.5
   otherTransform: {fileID: 0}

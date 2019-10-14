@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LogEnemy : Enemy
 {
-    public Transform target;
+    Rigidbody2D rb;
+    Transform target;
     public float chaseRadius;
     public float attackRadius;
-    public Vector2 homePosition;
+    Vector2 homePosition;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -15,9 +16,9 @@ public class LogEnemy : Enemy
         base.Start();
         homePosition = transform.position;
         target = GameObject.FindWithTag("Player").transform;
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckDistance();
@@ -25,15 +26,22 @@ public class LogEnemy : Enemy
 
     void CheckDistance()
     {
-        if(Vector3.Distance(target.position, transform.position) <= chaseRadius &&
-            Vector3.Distance(target.position, transform.position) > attackRadius)
+        float distFromTarget = Vector2.Distance(target.position, transform.position);
+        if (distFromTarget <= chaseRadius && distFromTarget > attackRadius)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            if (currentState != EnemyState.Stagger)
+            {
+                Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                rb.MovePosition(temp);
+            }
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        print("LogEnemy was hit by player");
+        else if (distFromTarget > chaseRadius)
+        {
+            if(currentState != EnemyState.Stagger)
+            {
+                Vector2 temp = Vector2.MoveTowards(transform.position, homePosition, moveSpeed * Time.deltaTime);
+                rb.MovePosition(temp);
+            }
+        }
     }
 }
