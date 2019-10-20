@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour, IDamageable<float, Player>
     protected Rigidbody2D rb;
     protected Animator anim;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         ChangeState(EnemyState.Idle);
         currHealth = maxHealth;
@@ -29,7 +29,12 @@ public class Enemy : MonoBehaviour, IDamageable<float, Player>
         anim = GetComponent<Animator>();
     }
 
-    public void Destroy()
+    protected virtual void OnEnable()
+    {
+        currHealth = maxHealth;
+    }
+
+    public virtual void Destroy()
     {
         gameObject.SetActive(false);
     }

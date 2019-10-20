@@ -20,14 +20,12 @@ public class Pot : MonoBehaviour, IDamageable<float, Player>
     public void Destroy()
     {
         anim.SetBool("Destroyed", true);
-        Invoke("Disable", .5f);
+        Invoke("Disable", 2f);
     }
-
+    
     void Disable()
     {
         anim.SetBool("Destroyed", false);
-        anim.enabled = false;
-
         gameObject.SetActive(false);
     }
 }

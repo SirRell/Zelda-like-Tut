@@ -10,14 +10,21 @@ public class LogEnemy : Enemy
     Vector2 homePosition;
 
     // Start is called before the first frame update
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         homePosition = transform.position;
         target = GameObject.FindWithTag("Player").transform;
     }
 
-    void Update()
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        if((Vector2)transform.position != homePosition)
+            transform.position = homePosition;
+    }
+
+    void FixedUpdate()
     {
         if (target.gameObject.activeInHierarchy)
             CheckDistance();
@@ -45,8 +52,7 @@ public class LogEnemy : Enemy
             if(currentState == EnemyState.Walk)
             {
                 ChangeState(EnemyState.Attack);
-                target.GetComponent<IDamageable<float, Enemy>>().TakeDamage(baseAttack, GetComponent<Enemy>());
-                ChangeState(EnemyState.Walk);
+                StartCoroutine(Attack());
             }
         }
         else if (distFromTarget > chaseRadius)
@@ -69,15 +75,24 @@ public class LogEnemy : Enemy
 
     }
 
+    IEnumerator Attack()
+    {
+        target.GetComponent<IDamageable<float, Enemy>>().TakeDamage(baseAttack, GetComponent<Enemy>());
+        Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        yield return new WaitForSeconds(.5f);
+        ChangeState(EnemyState.Walk);
+        UpdateAnimation((temp - (Vector2)transform.position).normalized);
+    }
+
     void UpdateAnimation(Vector2 direction)
     {
         anim.SetFloat("moveX", direction.x);
         anim.SetFloat("moveY", direction.y);
 
-        //if(target.gameObject.activeInHierarchy && currentState != EnemyState.Idle)
-        //{
-        //    anim.SetTrigger("Sleep");
-        //    ChangeState(EnemyState.Idle);
-        //}
+        if (!target.gameObject.activeInHierarchy && currentState != EnemyState.Idle)
+        {
+            anim.SetTrigger("Sleep");
+            ChangeState(EnemyState.Idle);
+        }
     }
 }

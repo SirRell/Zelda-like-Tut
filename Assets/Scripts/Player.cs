@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour, IDamageable<float, Enemy>
 {
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour, IDamageable<float, Enemy>
     public float maxHealth = 5f;
     public float currHealth;
     public float strength = 1f;
-
+    public event Action ReceivedDamage;
 
     protected virtual void Start()
     {
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour, IDamageable<float, Enemy>
     public void TakeDamage(float damageTaken, Enemy damageGiver)
     {
         currHealth -= damageTaken;
+        ReceivedDamage?.Invoke();
         if (currHealth <= 0f)
         {
             Destroy();
