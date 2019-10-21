@@ -12,8 +12,8 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         InfoManager iM = InfoManager.Instance;
-        if (iM.PlayerPosition != Vector2.zero)
-            transform.position = new Vector3(iM.PlayerPosition.x, iM.PlayerPosition.y, transform.position.y);
+        if (iM.NewPlayerPosition != Vector2.zero)
+            transform.position = new Vector3(iM.NewPlayerPosition.x, iM.NewPlayerPosition.y, transform.position.y);
     }
 
     void LateUpdate()

@@ -4,7 +4,7 @@ public class InfoManager : MonoBehaviour
 {
     static InfoManager instance;
     public static InfoManager Instance { get { return instance; } }
-    public Vector2 PlayerPosition { get; set; }
+    public Vector2 NewPlayerPosition { get; set; }
     public float PlayerHealth { get; set; }
 
     void Awake()
@@ -17,32 +17,11 @@ public class InfoManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            //SceneManager.sceneLoaded += LevelWasLoaded;
         }
     }
 
-    public void Unsubscribe()
+    public void UpdateStats()
     {
         PlayerHealth = FindObjectOfType<Player>().currHealth;
-        //FindObjectOfType<Player>().ReceivedDamage -= PlayerReceivedDamage;
     }
-
-    //void LevelWasLoaded(Scene scene, LoadSceneMode mode)
-    //{
-    //    if (instance == this)
-    //    {
-    //        Subscribe();
-    //    }
-    //}
-
-    //void Subscribe()
-    //{
-    //    FindObjectOfType<Player>().ReceivedDamage += PlayerReceivedDamage;
-    //}
-
-    //private void PlayerReceivedDamage()
-    //{
-
-    //}
-
 }
