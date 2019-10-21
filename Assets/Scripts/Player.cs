@@ -24,8 +24,12 @@ public class Player : MonoBehaviour, IDamageable<float, Enemy>
     {
         ChangeState(PlayerState.Walk);
         rb = GetComponent<Rigidbody2D>();
-        currHealth = maxHealth;
-
+        if (InfoManager.Instance.PlayerHealth != 0)
+            currHealth = InfoManager.Instance.PlayerHealth;
+        else
+            currHealth = maxHealth;
+        if(InfoManager.Instance.PlayerPosition != Vector2.zero)
+            transform.position = InfoManager.Instance.PlayerPosition;
     }
 
     public void Destroy()
@@ -57,5 +61,4 @@ public class Player : MonoBehaviour, IDamageable<float, Enemy>
         if (currentState != newState)
             currentState = newState;
     }
-
 }
