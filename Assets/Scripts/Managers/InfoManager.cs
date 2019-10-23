@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class InfoManager : MonoBehaviour
 {
     static InfoManager instance;
@@ -18,6 +19,12 @@ public class InfoManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        SceneManager.sceneLoaded += InitiateLevel;
+    }
+
+    public void InitiateLevel(Scene scene, LoadSceneMode mode)
+    {
+        GameObject.FindWithTag("Transition").GetComponent<UnityEngine.UI.Image>().enabled = true;
     }
 
     public void UpdateStats()

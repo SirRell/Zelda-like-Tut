@@ -41235,7 +41235,7 @@ PrefabInstance:
     - target: {fileID: 7159655881243562987, guid: d878325895bf0f24bb9b788d10ba4b57,
         type: 3}
       propertyPath: m_Name
-      value: FadeIn
+      value: Fade
       objectReference: {fileID: 0}
     - target: {fileID: 8460606550206180781, guid: d878325895bf0f24bb9b788d10ba4b57,
         type: 3}
@@ -55572,7 +55572,7 @@ PrefabInstance:
     - target: {fileID: 6537953285589247904, guid: 0d45184912e30074d8df596d21e3646a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.174347
+      value: 8.38
       objectReference: {fileID: 0}
     - target: {fileID: 6537953285589247904, guid: 0d45184912e30074d8df596d21e3646a,
         type: 3}
@@ -55632,8 +55632,14 @@ PrefabInstance:
     - target: {fileID: 141519514949997698, guid: 0d45184912e30074d8df596d21e3646a,
         type: 3}
       propertyPath: dialogue
-      value: Danger! Water ahead!
+      value: Watch out for Walking Logs!
       objectReference: {fileID: 0}
+    - target: {fileID: 141519514949997698, guid: 0d45184912e30074d8df596d21e3646a,
+        type: 3}
+      propertyPath: contextImage
+      value: 
+      objectReference: {fileID: 8387997009269029421, guid: da3638d5041094649ab78df54e5f40a2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d45184912e30074d8df596d21e3646a, type: 3}
 --- !u!1001 &3288114049165747313

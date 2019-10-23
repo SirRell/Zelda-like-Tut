@@ -24,10 +24,11 @@ public class SceneTransition : MonoBehaviour
     IEnumerator FadeAndLoad(Collider2D player)
     {
         player.GetComponent<PlayerMovement>().enabled = false;
-        if(fadeOutImage != null)
-        {
-            Instantiate(fadeOutImage, Vector3.zero, Quaternion.identity);
-        }
+        GameObject.FindWithTag("Transition").GetComponentInParent<Animator>().SetTrigger("Fade");
+        //if(fadeOutImage != null)
+        //{
+        //    Instantiate(fadeOutImage, Vector3.zero, Quaternion.identity);
+        //}
         yield return new WaitForSeconds(fadeWait);
         AsyncOperation loadNewScene = SceneManager.LoadSceneAsync(sceneToLoad);
         while (!loadNewScene.isDone)

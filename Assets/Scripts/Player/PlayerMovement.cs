@@ -23,10 +23,10 @@ public class PlayerMovement : Player
         moveDir.y = Input.GetAxisRaw("Vertical");
         if(Input.GetButtonDown("Attack") && currentState != PlayerState.Stagger)
         {
-            if(currentState != PlayerState.Attack)
+            if(currentState != PlayerState.Attack && currentState != PlayerState.Interact)
                 StartCoroutine(AttackCo());
         }
-        else if(currentState == PlayerState.Walk)
+        else if(currentState == PlayerState.Walk || currentState == PlayerState.Interact)
         {
             UpdateAnimation();
         }

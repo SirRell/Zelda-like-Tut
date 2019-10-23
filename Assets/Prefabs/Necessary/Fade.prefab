@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3189352967453952955}
   m_Layer: 5
   m_Name: fadeImage
-  m_TagString: Untagged
+  m_TagString: Transition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6980950538209163701}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 918548526695967581}
   - component: {fileID: 844238801696849861}
   m_Layer: 5
-  m_Name: FadeIn
+  m_Name: Fade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -149,5 +149,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 0}
   dialogueText: {fileID: 0}
-  dialog: Lake Ahead
-  dialogActive: 0
+  dialogue: 
+  contextImage: {fileID: 0}
