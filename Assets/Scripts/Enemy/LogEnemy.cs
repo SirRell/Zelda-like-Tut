@@ -26,14 +26,14 @@ public class LogEnemy : Enemy
 
     void FixedUpdate()
     {
-        if (target.gameObject.activeInHierarchy)
-            CheckDistance();
+        //if (target.gameObject.activeInHierarchy)
+        CheckDistance();
     }
 
     void CheckDistance()
     {
         float distFromTarget = Vector2.Distance(target.position, transform.position);
-        if (distFromTarget <= chaseRadius && distFromTarget > attackRadius)
+        if (distFromTarget <= chaseRadius && distFromTarget > attackRadius && target.gameObject.activeInHierarchy)
         {
             if(currentState == EnemyState.Idle)
             {
@@ -47,15 +47,7 @@ public class LogEnemy : Enemy
                 rb.MovePosition(temp);
             }
         }
-        else if(distFromTarget < attackRadius)
-        {
-            if(currentState == EnemyState.Walk)
-            {
-                ChangeState(EnemyState.Attack);
-                StartCoroutine(Attack());
-            }
-        }
-        else if (distFromTarget > chaseRadius)
+        else if (distFromTarget > chaseRadius || !target.gameObject.activeInHierarchy)
         {
             if(currentState != EnemyState.Stagger)
             {
@@ -69,6 +61,14 @@ public class LogEnemy : Enemy
                     return;
                 }
                 UpdateAnimation((temp - (Vector2)transform.position).normalized);
+            }
+        }
+        else if(distFromTarget < attackRadius)
+        {
+            if(currentState == EnemyState.Walk)
+            {
+                ChangeState(EnemyState.Attack);
+                StartCoroutine(Attack());
             }
         }
 
@@ -89,10 +89,10 @@ public class LogEnemy : Enemy
         anim.SetFloat("moveX", direction.x);
         anim.SetFloat("moveY", direction.y);
 
-        if (!target.gameObject.activeInHierarchy && currentState != EnemyState.Idle)
-        {
-            anim.SetTrigger("Sleep");
-            ChangeState(EnemyState.Idle);
-        }
+        //if (!target.gameObject.activeInHierarchy && currentState != EnemyState.Idle)
+        //{
+        //    anim.SetTrigger("Sleep");
+        //    ChangeState(EnemyState.Idle);
+        //}
     }
 }

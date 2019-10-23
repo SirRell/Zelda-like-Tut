@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
-    float thrust = 8.5f;
+    readonly float thrust = 8.5f;
     Rigidbody2D myRB;
-    [HideInInspector] public Transform otherTransform;
 
     private void Start()
     {
@@ -15,7 +14,7 @@ public class Knockback : MonoBehaviour
 
     public IEnumerator KnockBack(Transform otherTransform)
     {
-        Vector2 forceDirection = transform.position - otherTransform.root.position;
+        Vector2 forceDirection = transform.position - otherTransform.position;
         Vector2 force = forceDirection.normalized * thrust;
         myRB.velocity = force;
         yield return new WaitForSeconds(.15f);
