@@ -5,7 +5,6 @@ using UnityEngine;
 public class Pot : MonoBehaviour, IDamageable<float, Player>
 {
     Animator anim;
-
     void Start()
     {
         anim = GetComponent<Animator>();

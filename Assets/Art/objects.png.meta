@@ -241,10 +241,10 @@ TextureImporter:
     second: objects_78
   - first:
       213: 4568664149699701401
-    second: objects_79
+    second: Blank
   - first:
       213: 243028321930452633
-    second: objects_80
+    second: 3Dot
   - first:
       213: 3487095783347953447
     second: objects_81
@@ -268,10 +268,10 @@ TextureImporter:
     second: objects_87
   - first:
       213: -6156538738564848463
-    second: objects_88
+    second: 1Dot
   - first:
       213: -3163061646288262330
-    second: objects_89
+    second: 2Dot
   - first:
       213: -8894351329827163213
     second: objects_90
@@ -301,10 +301,10 @@ TextureImporter:
     second: objects_98
   - first:
       213: 5955781087917997448
-    second: objects_99
+    second: ExclamationMark
   - first:
       213: 8387997009269029421
-    second: objects_100
+    second: QuestionMark
   - first:
       213: -3555468057966329373
     second: objects_101
@@ -2174,7 +2174,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_79
+      name: Blank
       rect:
         serializedVersion: 2
         x: 32
@@ -2195,7 +2195,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_80
+      name: 3Dot
       rect:
         serializedVersion: 2
         x: 48
@@ -2237,7 +2237,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_88
+      name: 1Dot
       rect:
         serializedVersion: 2
         x: 32
@@ -2258,7 +2258,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_89
+      name: 2Dot
       rect:
         serializedVersion: 2
         x: 48
@@ -2321,7 +2321,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_99
+      name: ExclamationMark
       rect:
         serializedVersion: 2
         x: 32
@@ -2342,7 +2342,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_100
+      name: QuestionMark
       rect:
         serializedVersion: 2
         x: 48
@@ -3190,7 +3190,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3211,7 +3211,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3232,7 +3232,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

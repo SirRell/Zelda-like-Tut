@@ -7,7 +7,6 @@ public class InfoManager : MonoBehaviour
     public static InfoManager Instance { get { return instance; } }
     public Vector2 NewPlayerPosition { get; set; }
     public float PlayerHealth { get; set; }
-
     void Awake()
     {
         if (instance != null && instance != this)

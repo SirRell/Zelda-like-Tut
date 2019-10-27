@@ -2,42 +2,35 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Sign : MonoBehaviour
+public class Sign : Interactable
 {
     public GameObject dialogueBox;
     public Text dialogueText;
     public string dialogue;
-    public Sprite contextImage;
-    bool playerInRange = false;
-    public event System.Action<Sprite> Interactable;
-    public event System.Action NotInteracting;
-    public event System.Action Interacting;
 
     private void Update()
     {
-        if(Input.GetButtonDown("Submit") && playerInRange)
+        if(playerInRange && Input.GetButtonDown("Submit"))
         {
-            Interacting?.Invoke();
+            Interacting();
             dialogueBox.SetActive(!dialogueBox.activeSelf);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    override protected void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Interactable?.Invoke(contextImage);
+            base.OnTriggerEnter2D(other);
             dialogueText.text = dialogue;
-            playerInRange = true;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    override protected void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            NotInteracting?.Invoke();
-            playerInRange = false;
+            base.OnTriggerExit2D(other);
             dialogueBox.SetActive(false);
         }
     }
