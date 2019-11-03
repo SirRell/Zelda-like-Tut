@@ -51,8 +51,8 @@ public class Enemy : MonoBehaviour, IDamageable<float, Player>
             Knockback kB = GetComponent<Knockback>();
             if (kB!= null)
             {
-                StartCoroutine(kB.KnockBack(damageGiver.gameObject.transform));
                 ChangeState(EnemyState.Stagger);
+                StartCoroutine(kB.KnockBack(damageGiver.gameObject.transform));
             }
         }
     }

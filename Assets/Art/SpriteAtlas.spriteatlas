@@ -42,10 +42,14 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 6b839cecf14071e4c9b14de007e3cca1, type: 3}
-    totalSpriteSurfaceArea: 495385
+    totalSpriteSurfaceArea: 503095
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 5580808760293252755, guid: f8043e21f451efd4d8c37f6093e863ce, type: 3}
+  - {fileID: 275180924923007561, guid: f8043e21f451efd4d8c37f6093e863ce, type: 3}
+  - {fileID: -3498927866589285748, guid: f8043e21f451efd4d8c37f6093e863ce, type: 3}
+  - {fileID: 7040817277579712635, guid: f8043e21f451efd4d8c37f6093e863ce, type: 3}
   - {fileID: 3059174765694063163, guid: 7851643146c18534dbfb788c9697d562, type: 3}
   - {fileID: -34017176892466219, guid: 7851643146c18534dbfb788c9697d562, type: 3}
   - {fileID: 2376815873980901129, guid: 7851643146c18534dbfb788c9697d562, type: 3}
@@ -1702,6 +1706,10 @@ SpriteAtlas:
   - {fileID: -8506932439865520012, guid: 6088642e1c6850d42aba6be3c49ed660, type: 3}
   - {fileID: -2355267295002078251, guid: 6088642e1c6850d42aba6be3c49ed660, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Keys_2
+  - Common Key
+  - Uncommon Key
+  - Boss Key
   - log_8
   - log_9
   - log_2

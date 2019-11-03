@@ -12,13 +12,21 @@ public class Interactable : MonoBehaviour
 
     public Sprite contextImage;
     protected bool playerInRange = false;
+    protected GameObject player;
     ContextClue playerCC;
-    
+    ContactFilter2D filter;
+
+    virtual protected void Start()
+    {
+        filter.useTriggers = filter.useLayerMask = true;
+        filter.layerMask = 256; //256 is the "Interactable" layerMask
+    }
 
     virtual protected void OnTriggerEnter2D(Collider2D other)
     {
         playerInRange = true;
-        playerCC = other.gameObject.GetComponentInChildren<ContextClue>();
+        player = other.gameObject;
+        playerCC = player.GetComponentInChildren<ContextClue>();
         MeInteractable();
     }
 
@@ -26,14 +34,13 @@ public class Interactable : MonoBehaviour
     {
         if (playerCC != null)
             playerCC.Interacting();
-        GetComponent<BoxCollider2D>().enabled = false;
         //Interacting?.Invoke();
     }
 
     virtual protected void MeInteractable()
     {
        if(playerCC != null)
-            playerCC.Interactable(contextImage);
+            playerCC.ShowContext(contextImage);
         //MeInteractable?.Invoke(contextImage);
     }
 
@@ -43,13 +50,13 @@ public class Interactable : MonoBehaviour
             playerCC.StopInteracting();
         //NotInteracting?.Invoke();
     }
-    public ContactFilter2D filter;
+
     virtual protected void OnTriggerExit2D(Collider2D other)
     {
         //BoxCollider2D other.GetComponent<BoxCollider2D>();
         playerInRange = false;
 
-        bool isTouching = other.IsTouching(filter); //****BUG****
+        bool isTouching = other.IsTouching(filter); 
         if (isTouching)
         {
             return;

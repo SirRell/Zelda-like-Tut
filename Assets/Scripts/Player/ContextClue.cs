@@ -20,15 +20,15 @@ public class ContextClue : MonoBehaviour
         //}
     }
 
-    public void Interactable(Sprite contextImage)
+    public void ShowContext(Sprite contextImage)
     {
-        GetComponentInParent<Player>().ChangeState(Player.PlayerState.Interact);
         myRenderer.sprite = contextImage;
         myRenderer.enabled = true;
     }
-
+    
     public void Interacting()
     {
+        GetComponentInParent<Player>().ChangeState(Player.PlayerState.Interact);
         myRenderer.enabled = !myRenderer.enabled;
     }
 
