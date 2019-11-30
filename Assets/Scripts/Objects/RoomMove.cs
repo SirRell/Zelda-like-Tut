@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RoomMove : MonoBehaviour
 {
@@ -11,11 +12,12 @@ public class RoomMove : MonoBehaviour
     public bool needText;
     public string roomName;
     public GameObject text;
-    public Text placeText;
+    TextMeshProUGUI placeText;
 
     private void Start()
     {
         cam = Camera.main.GetComponent<CameraMovement>();
+        placeText = text.GetComponent<TextMeshProUGUI>();
     }
 
     public void OnTriggerEnter2D(Collider2D other)

@@ -180,5 +180,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextImage: {fileID: 0}
   dialogueBox: {fileID: 0}
-  dialogueText: {fileID: 0}
   dialogue: 

@@ -1,12 +1,20 @@
 ﻿
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Sign : Interactable
 {
     public GameObject dialogueBox;
-    public Text dialogueText;
+    //public Text dialogueText;
+    TextMeshProUGUI dialogueText;
     public string dialogue;
+
+    protected override void Start()
+    {
+        base.Start();
+        dialogueText = dialogueBox.GetComponentInChildren<TextMeshProUGUI>();
+    }
 
     protected override void Update()
     {

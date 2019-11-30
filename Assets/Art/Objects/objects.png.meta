@@ -181,13 +181,13 @@ TextureImporter:
     second: objects_58
   - first:
       213: -6998631668141411158
-    second: objects_59
+    second: Coin1
   - first:
       213: 9171275872940762989
-    second: objects_60
+    second: Coin2
   - first:
       213: -7079720951457237320
-    second: objects_61
+    second: Coin4
   - first:
       213: -1955489751837219279
     second: SmokeExplode2
@@ -418,7 +418,7 @@ TextureImporter:
     second: objects_137
   - first:
       213: -2595804346393511659
-    second: objects_138
+    second: Currency
   - first:
       213: 2906919875820574449
     second: objects_139
@@ -431,6 +431,9 @@ TextureImporter:
   - first:
       213: -2376591590991214436
     second: HeartIcon
+  - first:
+      213: 4182620505961097661
+    second: Coin3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -1595,7 +1598,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_59
+      name: Coin1
       rect:
         serializedVersion: 2
         x: 2
@@ -1616,12 +1619,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_60
+      name: Coin2
       rect:
         serializedVersion: 2
         x: 18
         y: 243
-        width: 10
+        width: 11
         height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1637,12 +1640,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_61
+      name: Coin4
       rect:
         serializedVersion: 2
-        x: 51
+        x: 50
         y: 243
-        width: 10
+        width: 11
         height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2876,12 +2879,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_138
+      name: Currency
       rect:
         serializedVersion: 2
-        x: 7
+        x: 64
         y: 4
-        width: 120
+        width: 63
         height: 25
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -3052,7 +3055,7 @@ TextureImporter:
         width: 12
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3060,6 +3063,27 @@ TextureImporter:
       bones: []
       spriteID: 86df07b8c376ea04caeab67d8333cf64
       internalID: -2376591590991214436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin3
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 243
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76bf77d0e5a34694da9a9416cd5c9891
+      internalID: 4182620505961097661
       vertices: []
       indices: 
       edges: []

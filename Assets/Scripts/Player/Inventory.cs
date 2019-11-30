@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class Inventory : MonoBehaviour
     public int bossKeys;
     bool receivingItem;
     public GameObject dialogueBox;
-    public Text dialogueText;
+    //public Text dialogueText;
+    TextMeshProUGUI dialogueText;
 
     private void Start()
     {
@@ -20,7 +22,7 @@ public class Inventory : MonoBehaviour
         MyItems = InfoManager.Instance.items;
         commonKeys = InfoManager.Instance.Keys;
         //dialogueBox = GameObject.Find("Dialogue Box");
-        //dialogueText = dialogueBox.GetComponentInChildren<Text>();
+        dialogueText = dialogueBox.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Update()
