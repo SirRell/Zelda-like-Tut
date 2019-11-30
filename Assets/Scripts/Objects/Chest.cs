@@ -8,10 +8,11 @@ public class Chest : Interactable
     public Sprite openSprite;
     public bool isOpen;
 
+
     override protected void Start()
     {
         base.Start();
-        if (InfoManager.Instance.chests.TryGetValue(gameObject.name, out bool temp))
+        if (InfoManager.Instance.chests.TryGetValue(name, out bool temp))
         {
             isOpen = temp;
             if (isOpen)
@@ -22,11 +23,11 @@ public class Chest : Interactable
         }
         else
         {
-            InfoManager.Instance.chests.Add(gameObject.name, isOpen);
+            InfoManager.Instance.chests.Add(name, isOpen);
         }
     }
 
-    private void Update()
+    protected override void Update()
     {
         if (playerInRange && Input.GetButtonDown("Submit"))
         {
@@ -63,6 +64,6 @@ public class Chest : Interactable
     public void GiveItem()
     {
         player.GetComponent<Inventory>().ReceiveItem(contents);
-        contents = null;
+        //contents = null;
     }
 }

@@ -14,7 +14,7 @@ public class HealthUI : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<Player>();
-        player.ReceivedDamage += UpdateHearts;
+        player.HealthChanged += UpdateHearts;
         InitHearts();
         UpdateHearts();
     }

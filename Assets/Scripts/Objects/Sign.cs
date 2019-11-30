@@ -8,11 +8,11 @@ public class Sign : Interactable
     public Text dialogueText;
     public string dialogue;
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if(playerInRange && Input.GetButtonDown("Submit"))
         {
-            Interacting();
             dialogueBox.SetActive(!dialogueBox.activeSelf);
         }
     }

@@ -7,6 +7,7 @@ public class InfoManager : MonoBehaviour
     static InfoManager instance;
     public static InfoManager Instance { get { return instance; } }
     public Vector2 NewPlayerPosition { get; set; }
+    public Vector2 NewCameraBoundsMin, NewCameraBoundsMax;
     public float PlayerHealth { get; set; }
     public int Keys { get; set; }
     public List<Items> items;

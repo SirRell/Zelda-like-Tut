@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Player : MonoBehaviour, IDamageable<float, Enemy>
+public class Player : MonoBehaviour, IDamageable
 {
     public enum PlayerState
     {
@@ -18,7 +18,7 @@ public class Player : MonoBehaviour, IDamageable<float, Enemy>
     public float maxHealth = 5f;
     public float currHealth;
     public float strength = 1f;
-    public event Action ReceivedDamage;
+    public event Action HealthChanged;
 
     protected virtual void Start()
     {
@@ -39,10 +39,10 @@ public class Player : MonoBehaviour, IDamageable<float, Enemy>
         gameObject.SetActive(false);
     }
 
-    public void TakeDamage(float damageTaken, Enemy damageGiver)
+    public void TakeDamage(float damageTaken, GameObject damageGiver)
     {
         currHealth -= damageTaken;
-        ReceivedDamage?.Invoke();
+        HealthChanged?.Invoke();
         if (currHealth <= 0f)
         {
             Destroy();
@@ -56,6 +56,13 @@ public class Player : MonoBehaviour, IDamageable<float, Enemy>
                 GetComponent<PlayerMovement>().ChangeState(PlayerState.Stagger);
             }
         }
+    }
+
+    public void Heal(int healthGiven)
+    {
+        currHealth += healthGiven;
+        currHealth = Mathf.Clamp(currHealth, 0, maxHealth);
+        HealthChanged?.Invoke();
     }
 
     public void ChangeState(PlayerState newState)

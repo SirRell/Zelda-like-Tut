@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public interface IDamageable<T, V> : IDestroyable
+public interface IDamageable : IDestroyable
 {
-    void TakeDamage(T damageTaken, V damageGiver);
+    void TakeDamage(float damageTaken, GameObject damageGiver);
 }
 
 public interface IDestroyable

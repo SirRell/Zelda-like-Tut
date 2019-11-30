@@ -18,7 +18,7 @@ public class RoomMove : MonoBehaviour
         cam = Camera.main.GetComponent<CameraMovement>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -31,6 +31,10 @@ public class RoomMove : MonoBehaviour
             {
                 StartCoroutine(PlaceNameCo());
             }
+        }
+        else
+        {
+            print("That's not the player, it's " + other.name);
         }
     }
 

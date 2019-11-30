@@ -145,6 +145,8 @@ MonoBehaviour:
   commonKeys: 0
   uncommonKeys: 0
   bossKeys: 0
+  dialogueBox: {fileID: 0}
+  dialogueText: {fileID: 0}
 --- !u!114 &2563314732267516042
 MonoBehaviour:
   m_ObjectHideFlags: 0

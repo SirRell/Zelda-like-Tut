@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour
 {
     public string sceneToLoad;
+
     public Vector2 playerStartPosition;
-    //public GameObject fadeInImage;
+
+    public bool newCamLimitsNeeded;
+    public Vector2 newCamLimitMin, newCamLimitMax;
+
     public GameObject fadeOutImage;
     public float fadeWait = .33f;
 
@@ -16,6 +20,15 @@ public class SceneTransition : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             InfoManager.Instance.NewPlayerPosition = playerStartPosition;
+            if (newCamLimitsNeeded)
+            {
+                InfoManager.Instance.NewCameraBoundsMin = newCamLimitMin;
+                InfoManager.Instance.NewCameraBoundsMax = newCamLimitMax;
+            }
+            else
+            {
+                InfoManager.Instance.NewCameraBoundsMin = InfoManager.Instance.NewCameraBoundsMax = Vector2.zero;
+            }
             InfoManager.Instance.UpdateStats();
             StartCoroutine(FadeAndLoad(other));
         }

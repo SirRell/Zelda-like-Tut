@@ -143,7 +143,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextImage: {fileID: 8387997009269029421, guid: da3638d5041094649ab78df54e5f40a2,
     type: 3}
-  contents: {fileID: 0}
+  contents: {fileID: 11400000, guid: 68e1a533916f93c48b0268ceb8b5f3da, type: 2}
+  openSprite: {fileID: 318953615281452700, guid: da3638d5041094649ab78df54e5f40a2,
+    type: 3}
+  isOpen: 0
 --- !u!1 &5474113638090941239
 GameObject:
   m_ObjectHideFlags: 0

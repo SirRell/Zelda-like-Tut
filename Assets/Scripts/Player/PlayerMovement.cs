@@ -68,9 +68,9 @@ public class PlayerMovement : Player
     {
         if(currentState == PlayerState.Attack)
         {
-            if(other.GetComponent<IDamageable<float, Player>>() != null)
+            if(other.GetComponent<IDamageable>() != null)
             {
-                other.GetComponent<IDamageable<float, Player>>().TakeDamage(strength, GetComponent<Player>());
+                other.GetComponent<IDamageable>().TakeDamage(strength, gameObject);
             }
         }
     }

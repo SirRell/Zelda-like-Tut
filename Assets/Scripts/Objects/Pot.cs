@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pot : MonoBehaviour, IDamageable<float, Player>
+public class Pot : MonoBehaviour, IDamageable
 {
     Animator anim;
+    public GameObject contents;
+
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    public void TakeDamage(float damageTaken, Player damageGiver)
+    public void TakeDamage(float damageTaken, GameObject damageGiver)
     {
         Destroy();
         anim.enabled = true;
@@ -20,8 +22,15 @@ public class Pot : MonoBehaviour, IDamageable<float, Player>
     {
         anim.SetBool("Destroyed", true);
         Invoke("Disable", 2f);
+        if(contents != null)
+            SpawnItem(contents);
     }
-    
+
+    public void SpawnItem(GameObject contents)
+    {
+        Instantiate(contents, transform.position, Quaternion.identity);
+    }
+
     void Disable()
     {
         anim.SetBool("Destroyed", false);

@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public Transform target;
-    public float smoothing= 0.6f;
+    Transform target;
+    public float smoothing= 0.1f;
     public Vector2 maxPosition, minPosition;
 
 
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         InfoManager iM = InfoManager.Instance;
         if (iM.NewPlayerPosition != Vector2.zero)
             transform.position = new Vector3(iM.NewPlayerPosition.x, iM.NewPlayerPosition.y, transform.position.y);
+        if(iM.NewCameraBoundsMax != Vector2.zero || iM.NewCameraBoundsMin != Vector2.zero)
+        {
+            minPosition = iM.NewCameraBoundsMin;
+            maxPosition = iM.NewCameraBoundsMax;
+        }
     }
 
     void LateUpdate()

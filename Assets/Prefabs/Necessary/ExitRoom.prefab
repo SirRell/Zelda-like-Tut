@@ -105,7 +105,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.25102025}
   m_EdgeRadius: 0
 --- !u!114 &1065224131687387469
 MonoBehaviour:
@@ -121,3 +121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: 
   playerStartPosition: {x: 0, y: 0}
+  fadeOutImage: {fileID: 7159655881243562987, guid: d878325895bf0f24bb9b788d10ba4b57,
+    type: 3}
+  fadeWait: 0.33

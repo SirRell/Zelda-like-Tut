@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1239355983864286887}
   - component: {fileID: 1239355983864286886}
   - component: {fileID: 4468152847348592859}
-  - component: {fileID: 7724014276873439120}
-  - component: {fileID: 2139007064}
+  - component: {fileID: 1167482863491621328}
   - component: {fileID: 2505416593552953627}
+  - component: {fileID: 7724014276873439120}
   m_Layer: 0
   m_Name: LogEnemy
   m_TagString: Enemy
@@ -125,6 +125,37 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1167482863491621328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239355983864286889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866db0838ffe1a24e8af8acfcc5364b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
+  currHealth: 0
+  baseAttack: 1
+  moveSpeed: 2
+  deathFX: {fileID: 2009807577534706467, guid: c428e7811fffcb84ca688099d387f77e, type: 3}
+  chaseRadius: 3
+  attackRadius: 0.96
+--- !u!114 &2505416593552953627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239355983864286889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d345907ec8e5bcd48a03708ab5d121c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &7724014276873439120
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -151,33 +182,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6640404, y: 0.70606613}
   m_EdgeRadius: 0
---- !u!114 &2139007064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239355983864286889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef62f7b686d63b438d141e55121d9e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 2
-  currHealth: 0
-  baseAttack: 1
-  moveSpeed: 2
-  chaseRadius: 3
-  attackRadius: 0.96
---- !u!114 &2505416593552953627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239355983864286889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d345907ec8e5bcd48a03708ab5d121c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

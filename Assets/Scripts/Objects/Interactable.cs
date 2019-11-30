@@ -22,10 +22,18 @@ public class Interactable : MonoBehaviour
         filter.layerMask = 256; //256 is the "Interactable" layerMask
     }
 
+    virtual protected void Update()
+    {
+        if (playerInRange && Input.GetButtonDown("Submit"))
+        {
+            Interacting();
+        }
+    }
+
     virtual protected void OnTriggerEnter2D(Collider2D other)
     {
         playerInRange = true;
-        player = other.gameObject;
+        player = other.gameObject.GetComponentInParent<Player>().gameObject;
         playerCC = player.GetComponentInChildren<ContextClue>();
         MeInteractable();
     }
