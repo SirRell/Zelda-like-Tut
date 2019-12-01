@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 
 public enum DoorType
@@ -21,8 +22,9 @@ public class Door : Interactable
     SpriteRenderer spriteRenderer;
     public Vector2 cameraBoundChange;
     public Vector2 playerPosShift;
+    float shakeDuration = .2f, shakeStrength = .2f;
+    int vibration = 50;
     int enemiesLeft = 0;
-
 
     protected override void Start()
     {
@@ -47,12 +49,20 @@ public class Door : Interactable
                     pI.commonKeys--;
                     StartCoroutine(OpenDoor());
                 }
+                else
+                {
+                    ShakeDoor();
+                }
                 break;
             case DoorType.UncommonKey:
                 if(pI.uncommonKeys > 0)
                 {
                     pI.uncommonKeys--;
                     StartCoroutine(OpenDoor());
+                }
+                else
+                {
+                    ShakeDoor();
                 }
                 break;
             case DoorType.BossKey:
@@ -61,18 +71,32 @@ public class Door : Interactable
                     pI.bossKeys--;
                     StartCoroutine(OpenDoor());
                 }
+                else
+                {
+                    ShakeDoor();
+                }
                 break;
             case DoorType.KillEnemies:
                 if(enemiesLeft <= 0)
                 {
                     StartCoroutine(OpenDoor());
                 }
+                else
+                {
+                    ShakeDoor();
+                }
                 break;
             case DoorType.Switch:
+                ShakeDoor();
                 break;
             default:
                 break;
         }
+    }
+
+    void ShakeDoor()
+    {
+        transform.DOShakePosition(shakeDuration, shakeStrength, vibration, 90);
     }
 
     IEnumerator OpenDoor()
@@ -91,7 +115,7 @@ public class Door : Interactable
         player.GetComponent<PlayerMovement>().enabled = true;
     }
 
-    void SetDoorType(DoorType newOpenBy)
+    public void SetDoorType(DoorType newOpenBy)
     {
         if (OpenBy != newOpenBy)
             OpenBy = newOpenBy;

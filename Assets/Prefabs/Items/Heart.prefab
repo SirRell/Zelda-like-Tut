@@ -140,8 +140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6072e27c2576a84f8f16757d33432f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   contextImage: {fileID: -2376591590991214436, guid: da3638d5041094649ab78df54e5f40a2,
     type: 3}
   itemDisplay: {fileID: 1670825299326003828, guid: 459ccf261f606864e910461641a00f4d,
     type: 3}
+  jumpStrength: 1
+  jumps: 1
   amountToHeal: 1

@@ -32,10 +32,13 @@ public class Interactable : MonoBehaviour
 
     virtual protected void OnTriggerEnter2D(Collider2D other)
     {
-        playerInRange = true;
-        player = other.gameObject.GetComponentInParent<Player>().gameObject;
-        playerCC = player.GetComponentInChildren<ContextClue>();
-        MeInteractable();
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+            player = other.gameObject.GetComponentInParent<Player>().gameObject;
+            playerCC = player.GetComponentInChildren<ContextClue>();
+            MeInteractable();
+        }
     }
 
     virtual protected void Interacting()
@@ -62,7 +65,8 @@ public class Interactable : MonoBehaviour
     virtual protected void OnTriggerExit2D(Collider2D other)
     {
         //BoxCollider2D other.GetComponent<BoxCollider2D>();
-        playerInRange = false;
+        if(other.CompareTag("Player"))
+            playerInRange = false;
 
         bool isTouching = other.IsTouching(filter); 
         if (isTouching)

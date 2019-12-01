@@ -17,7 +17,8 @@ public class RoomMove : MonoBehaviour
     private void Start()
     {
         cam = Camera.main.GetComponent<CameraMovement>();
-        placeText = text.GetComponent<TextMeshProUGUI>();
+        if(text != null)
+            placeText = text.GetComponent<TextMeshProUGUI>();
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -33,10 +34,6 @@ public class RoomMove : MonoBehaviour
             {
                 StartCoroutine(PlaceNameCo());
             }
-        }
-        else
-        {
-            print("That's not the player, it's " + other.name);
         }
     }
 

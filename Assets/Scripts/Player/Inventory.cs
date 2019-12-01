@@ -2,27 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 using TMPro;
 
 public class Inventory : MonoBehaviour
 {
     ContextClue context;
+    public GameObject dialogueBox;
+    TextMeshProUGUI dialogueText;
     public List<Items> MyItems;
     public int commonKeys;
     public int uncommonKeys;
     public int bossKeys;
+    public int money;
     bool receivingItem;
-    public GameObject dialogueBox;
-    //public Text dialogueText;
-    TextMeshProUGUI dialogueText;
+    public event Action MoneyChanged;
+    
 
     private void Start()
     {
         context = GetComponentInChildren<ContextClue>();
         MyItems = InfoManager.Instance.items;
-        commonKeys = InfoManager.Instance.Keys;
+        commonKeys = InfoManager.Instance.CommonKeys;
+        uncommonKeys = InfoManager.Instance.UnCommonKeys;
+        bossKeys = InfoManager.Instance.BossKeys;
+        money = InfoManager.Instance.Money;
+
         //dialogueBox = GameObject.Find("Dialogue Box");
         dialogueText = dialogueBox.GetComponentInChildren<TextMeshProUGUI>();
+
     }
 
     private void Update()
@@ -51,6 +59,25 @@ public class Inventory : MonoBehaviour
         MyItems.Add(itemToReceive);
         context.GetComponent<SpriteRenderer>().sprite = itemToReceive.itemDisplay;
         Animate();
+    }
+
+    public void ReceiveCollectable(Collectable collectableToReceive)
+    {
+        switch (collectableToReceive.type)
+        {
+            case CollectableType.Heart:
+                break;
+            case CollectableType.Money:
+                money += collectableToReceive.GetComponentInParent<Coin>().coinValue;
+                MoneyChanged?.Invoke();
+                break;
+            case CollectableType.Bomb:
+                break;
+            case CollectableType.Stick:
+                break;
+            default:
+                break;
+        }
     }
 
     void Animate()

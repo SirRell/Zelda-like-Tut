@@ -18,7 +18,8 @@ public class Player : MonoBehaviour, IDamageable
     public float maxHealth = 5f;
     public float currHealth;
     public float strength = 1f;
-    public event Action HealthChanged;
+    public event Action DamageTaken;
+    public event Action HealthGiven;
 
     protected virtual void Start()
     {
@@ -42,7 +43,7 @@ public class Player : MonoBehaviour, IDamageable
     public void TakeDamage(float damageTaken, GameObject damageGiver)
     {
         currHealth -= damageTaken;
-        HealthChanged?.Invoke();
+        DamageTaken?.Invoke();
         if (currHealth <= 0f)
         {
             Destroy();
@@ -62,7 +63,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         currHealth += healthGiven;
         currHealth = Mathf.Clamp(currHealth, 0, maxHealth);
-        HealthChanged?.Invoke();
+        HealthGiven?.Invoke();
     }
 
     public void ChangeState(PlayerState newState)

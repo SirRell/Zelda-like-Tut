@@ -141,12 +141,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d133f0ea08fa6794b91a9d5ada6c6db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 0}
   MyItems: []
   commonKeys: 0
   uncommonKeys: 0
   bossKeys: 0
-  dialogueBox: {fileID: 0}
-  dialogueText: {fileID: 0}
+  money: 0
 --- !u!114 &2563314732267516042
 MonoBehaviour:
   m_ObjectHideFlags: 0

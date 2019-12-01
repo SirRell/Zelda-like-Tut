@@ -1,13 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-
+public enum CollectableType
+{   Heart,
+    Money,
+    Bomb,
+    Stick
+}
 
 public class Collectable : MonoBehaviour
 {
+    public CollectableType type;
     public Sprite contextImage;
     public GameObject itemDisplay;
+    public float jumpStrength;
+    public int jumps;
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
@@ -25,6 +34,7 @@ public class Collectable : MonoBehaviour
 
         Collect(other);
         //Make the item display bounce a little
+        display.transform.DOLocalJump(Vector3.zero, jumpStrength, jumps, 1);
 
         yield return new WaitForSeconds(1f);
         Destroy(display);

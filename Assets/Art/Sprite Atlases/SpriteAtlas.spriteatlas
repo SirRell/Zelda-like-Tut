@@ -42,7 +42,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 6b839cecf14071e4c9b14de007e3cca1, type: 3}
-    totalSpriteSurfaceArea: 542896
+    totalSpriteSurfaceArea: 542476
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -1379,8 +1379,6 @@ SpriteAtlas:
   - {fileID: -8269877999206776090, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: -8006292867793706052, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 8531737542734488527, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
-  - {fileID: -2639854583086408205, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
-  - {fileID: 4391973271103909417, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: -1766389781502433406, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: -8076552262776366635, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 3487095783347953447, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
@@ -1411,6 +1409,7 @@ SpriteAtlas:
   - {fileID: -1760756981417539202, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 8626818278983215672, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 228074669703589773, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
+  - {fileID: 4391973271103909417, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: -7079720951457237320, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: -6998631668141411158, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 9171275872940762989, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
@@ -1486,6 +1485,7 @@ SpriteAtlas:
   - {fileID: -4430392651179603617, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: -7320531243435927957, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 1753205982242350755, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
+  - {fileID: -2639854583086408205, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 243028321930452633, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: -2376591590991214436, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: -464034680190023423, guid: d7e76e78d593a4e4eb647de6adbf2e6a, type: 3}
@@ -3164,8 +3164,6 @@ SpriteAtlas:
   - Heart4
   - objects_84
   - objects_69
-  - objects_98
-  - objects_97
   - objects_57
   - objects_56
   - objects_81
@@ -3196,6 +3194,7 @@ SpriteAtlas:
   - objects_122
   - objects_121
   - objects_120
+  - Button_Unpressed
   - Coin4
   - Coin1
   - Coin2
@@ -3271,6 +3270,7 @@ SpriteAtlas:
   - HealthContainer_Full
   - SmokeExplode5
   - Closed Small Chest
+  - Button_Pressed
   - 3Dot
   - HeartIcon
   - Inner_48

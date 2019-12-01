@@ -7,12 +7,15 @@ public class Chest : Interactable
     public Items contents;
     public Sprite openSprite;
     public bool isOpen;
+    string uniqueID;
 
 
     override protected void Start()
     {
         base.Start();
-        if (InfoManager.Instance.chests.TryGetValue(name, out bool temp))
+
+        uniqueID = UnityEngine.SceneManagement.SceneManager.GetActiveScene() + name + transform.position;
+        if (InfoManager.Instance.chests.TryGetValue(uniqueID, out bool temp))
         {
             isOpen = temp;
             if (isOpen)
@@ -23,7 +26,7 @@ public class Chest : Interactable
         }
         else
         {
-            InfoManager.Instance.chests.Add(name, isOpen);
+            InfoManager.Instance.chests.Add(uniqueID, isOpen);
         }
     }
 
@@ -47,7 +50,7 @@ public class Chest : Interactable
 
         GetComponent<Animator>().enabled = true;
         isOpen = true;
-        InfoManager.Instance.chests[name] = isOpen;
+        InfoManager.Instance.chests[uniqueID] = isOpen;
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)

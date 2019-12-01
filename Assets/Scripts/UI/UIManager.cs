@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class HealthUI : MonoBehaviour
+using TMPro;
+
+public class UIManager : MonoBehaviour
 {
     Player player;
+    Inventory playersInventory;
+    TextMeshProUGUI moneyText;
+
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite halfHeart;
@@ -13,10 +18,16 @@ public class HealthUI : MonoBehaviour
 
     private void Start()
     {
+        moneyText = GameObject.Find("CurrencyText").GetComponent<TextMeshProUGUI>();
+
         player = FindObjectOfType<Player>();
-        player.HealthChanged += UpdateHearts;
+        player.DamageTaken += UpdateHearts;
+        player.HealthGiven += UpdateHearts;
+        playersInventory = player.GetComponent<Inventory>();
+        playersInventory.MoneyChanged += UpdateMoney;
         InitHearts();
         UpdateHearts();
+        UpdateMoney();
     }
 
     void InitHearts()
@@ -46,5 +57,10 @@ public class HealthUI : MonoBehaviour
                 hearts[currentHeart].sprite = halfHeart;
             }
         }
+    }
+
+    void UpdateMoney()
+    {
+        moneyText.text = playersInventory.money.ToString("0000");
     }
 }

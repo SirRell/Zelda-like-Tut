@@ -9,9 +9,13 @@ public class InfoManager : MonoBehaviour
     public Vector2 NewPlayerPosition { get; set; }
     public Vector2 NewCameraBoundsMin, NewCameraBoundsMax;
     public float PlayerHealth { get; set; }
-    public int Keys { get; set; }
+    public int CommonKeys { get; set; }
+    public int UnCommonKeys { get; set; }
+    public int BossKeys { get; set; }
+    public int Money { get; set; }
     public List<Items> items;
     public Dictionary<string, bool> chests;
+    public Dictionary<string, bool> buttons;
 
     void Awake()
     {
@@ -26,6 +30,7 @@ public class InfoManager : MonoBehaviour
         }
         SceneManager.sceneLoaded += InitiateLevel;
         chests = new Dictionary<string, bool>();
+        buttons = new Dictionary<string, bool>();
     }
 
     public void InitiateLevel(Scene scene, LoadSceneMode mode)
@@ -38,7 +43,10 @@ public class InfoManager : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         PlayerHealth = player.GetComponent<Player>().currHealth;
         items = player.GetComponent<Inventory>().MyItems;
-        Keys = player.GetComponent<Inventory>().commonKeys;
+        CommonKeys = player.GetComponent<Inventory>().commonKeys;
+        UnCommonKeys = player.GetComponent<Inventory>().uncommonKeys;
+        BossKeys = player.GetComponent<Inventory>().bossKeys;
+        Money = player.GetComponent<Inventory>().money;
 
 
         //I may need this method when I start actually saving games

@@ -295,10 +295,10 @@ TextureImporter:
     second: objects_96
   - first:
       213: 4391973271103909417
-    second: objects_97
+    second: Button_Unpressed
   - first:
       213: -2639854583086408205
-    second: objects_98
+    second: Button_Pressed
   - first:
       213: 5955781087917997448
     second: ExclamationMark
@@ -2018,13 +2018,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_97
+      name: Button_Unpressed
       rect:
         serializedVersion: 2
         x: 0
         y: 160
         width: 14
-        height: 31
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2039,13 +2039,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_98
+      name: Button_Pressed
       rect:
         serializedVersion: 2
         x: 16
         y: 160
         width: 14
-        height: 31
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3076,7 +3076,7 @@ TextureImporter:
         width: 11
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
