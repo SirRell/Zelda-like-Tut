@@ -13,9 +13,10 @@ public class InfoManager : MonoBehaviour
     public int UnCommonKeys { get; set; }
     public int BossKeys { get; set; }
     public int Money { get; set; }
-    public List<Items> items;
+    public List<Item> items;
     public Dictionary<string, bool> chests = new Dictionary<string, bool>();
     public Dictionary<string, bool> buttons = new Dictionary<string, bool>();
+    public Dictionary<string, DoorType> doors = new Dictionary<string, DoorType>();
 
     void Awake()
     {

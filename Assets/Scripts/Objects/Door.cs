@@ -20,18 +20,38 @@ public class Door : Interactable
     public Sprite openDoorSprite;
     Sprite closedDoorSprite;
     SpriteRenderer spriteRenderer;
-    public Vector2 cameraBoundChange;
-    public Vector2 playerPosShift;
+
     float shakeDuration = .2f, shakeStrength = .2f;
     int vibration = 50;
     int enemiesLeft = 0;
 
+    RoomMove rm;
+
+    string uniqueID;
+
+
     protected override void Start()
     {
+        base.Start();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         closedDoorSprite = spriteRenderer.sprite;
+         rm = GetComponent<RoomMove>();
 
-        base.Start();
+        uniqueID = UnityEngine.SceneManagement.SceneManager.GetActiveScene() + name + transform.position;
+        if (InfoManager.Instance.doors.TryGetValue(uniqueID, out DoorType temp))
+        {
+            OpenBy = temp;
+            if (OpenBy == DoorType.None)
+            {
+                SetDoorType(DoorType.None);
+            }
+        }
+        else
+        {
+            InfoManager.Instance.doors.Add(uniqueID, OpenBy);
+        }
+
     }
 
     protected override void Interacting()
@@ -102,13 +122,11 @@ public class Door : Interactable
     IEnumerator OpenDoor()
     {
         SetDoorType(DoorType.None);
+        InfoManager.Instance.doors[uniqueID] = DoorType.None;
         player.GetComponent<PlayerMovement>().enabled = false;
         spriteRenderer.sprite = openDoorSprite;
-        RoomMove rm = gameObject.AddComponent<RoomMove>();
-        rm.cameraBoundsChange = cameraBoundChange;
-        rm.playerPosShift = playerPosShift;
         yield return new WaitForSeconds(.5f);
-        rm.OnTriggerEnter2D(player.GetComponent<Collider2D>());
+        rm.MovePlayer(player.GetComponent<Transform>());
         spriteRenderer.sprite = closedDoorSprite;
         yield return new WaitForSeconds(.2f);
         Destroy(rm);

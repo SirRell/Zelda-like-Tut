@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : Collectable
+public class Coin : Item
 {
     public int coinValue = 1;
-    public override void Collect(Collider2D other)
+
+    public override void Collect(Inventory player)
     {
-        Inventory player = other.GetComponent<Inventory>();
-        player.ReceiveCollectable(this);
+        player.ReceiveItem(gameObject);
     }
 
 }

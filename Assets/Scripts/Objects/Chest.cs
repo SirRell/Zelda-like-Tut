@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Chest : Interactable
 {
-    public Items contents;
+    public GameObject contents;
     public Sprite openSprite;
     public bool isOpen;
     string uniqueID;
@@ -66,7 +66,7 @@ public class Chest : Interactable
 
     public void GiveItem()
     {
-        player.GetComponent<Inventory>().ReceiveItem(contents);
+        player.GetComponent<Inventory>().ReceiveChestItem(contents);
         GetComponent<Animator>().enabled = false;
         //contents = null;
     }

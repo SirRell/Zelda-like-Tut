@@ -3,29 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public enum CollectableType
-{   Heart,
+public enum ItemType
+{   CommonKey,
+    UncommonKey,
+    BossKey,
+    Heart,
     Money,
     Bomb,
     Stick
 }
 
-public class Collectable : MonoBehaviour
+public class Item : MonoBehaviour
 {
-    public CollectableType type;
     public Sprite contextImage;
-    public GameObject itemDisplay;
     public AudioClip pickupSound;
-    public float jumpStrength;
-    public int jumps;
+    public float jumpStrength = 1;
+    public int jumps = 1;
+
+    public GameObject itemDisplay;
+    public ItemType type;
+    public string itemName, itemDescription;
+
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-            StartCoroutine(DisplayCollectable(other));
+            StartCoroutine(DisplayItem(other));
     }
 
-    IEnumerator DisplayCollectable(Collider2D other)
+    IEnumerator DisplayItem(Collider2D other)
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -33,7 +39,8 @@ public class Collectable : MonoBehaviour
         GameObject display = Instantiate(itemDisplay, other.transform.position + Vector3.up * 1.5f, Quaternion.identity, other.transform);
         display.GetComponent<SpriteRenderer>().sprite = contextImage;
         display.GetComponent<AudioSource>().PlayOneShot(pickupSound);
-        Collect(other);
+        Collect(other.GetComponent<Inventory>());
+
         //Make the item display bounce a little
         display.transform.DOLocalJump(Vector3.zero, jumpStrength, jumps, 1);
 
@@ -42,8 +49,8 @@ public class Collectable : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual void Collect(Collider2D other)
+    public virtual void Collect(Inventory playerInventory)
     {
-        
+
     }
 }

@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 1292728395200300124}
   - component: {fileID: 8120544395510016784}
   - component: {fileID: 1108297641}
+  - component: {fileID: 3366738422373219390}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -182,5 +183,19 @@ MonoBehaviour:
   OpenBy: 0
   openDoorSprite: {fileID: 4682442037090956709, guid: 6d088dc48ec3eb941bebaa5912c5ca22,
     type: 3}
-  cameraBoundChange: {x: 0, y: 0}
   playerPosShift: {x: 0, y: 0}
+--- !u!114 &3366738422373219390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560109447839716655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5aaf31f599e4774a8ada72e5c3c5d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosShift: {x: 0, y: 0}
+  needText: 0
+  roomName: 

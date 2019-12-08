@@ -44,8 +44,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public virtual void Destroy()
     {
         gameObject.SetActive(false);
-        deathFX = Instantiate(deathFX, transform.position, Quaternion.identity);
-        Destroy(deathFX, 1f);
+        GameObject deathEffect = Instantiate(deathFX, transform.position, Quaternion.identity);
+        Destroy(deathEffect, 1f);
     }
 
     public void TakeDamage(float damageTaken, GameObject damageGiver)

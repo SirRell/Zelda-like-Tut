@@ -6,29 +6,22 @@ using TMPro;
 
 public class RoomMove : MonoBehaviour
 {
-    public Vector2 cameraBoundsChange;
     public Vector2 playerPosShift;
-    CameraMovement cam;
+
     public bool needText;
     public string roomName;
-    public GameObject text;
     TextMeshProUGUI placeText;
 
     private void Start()
     {
-        cam = Camera.main.GetComponent<CameraMovement>();
-        if(text != null)
-            placeText = text.GetComponent<TextMeshProUGUI>();
+        placeText = GameObject.Find("RoomTitle").GetComponent<TextMeshProUGUI>();
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void MovePlayer(Transform player)
     {
-        if (other.CompareTag("Player"))
+        if (player.CompareTag("Player"))
         {
-            cam.minPosition += cameraBoundsChange;
-            cam.maxPosition += cameraBoundsChange;
-
-            other.transform.position += (Vector3)playerPosShift;
+            player.position += (Vector3)playerPosShift;
 
             if (needText)
             {
@@ -39,10 +32,10 @@ public class RoomMove : MonoBehaviour
 
     IEnumerator PlaceNameCo()
     {
-        text.SetActive(true);
         placeText.text = roomName;
+        placeText.enabled = true;
         yield return new WaitForSeconds(4f);
-        text.SetActive(false);
+        placeText.enabled = false;
     }
 
 }

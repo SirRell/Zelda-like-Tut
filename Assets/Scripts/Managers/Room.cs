@@ -39,11 +39,14 @@ public class Room : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>();
         bool playerPresent = GetComponent<PolygonCollider2D>().IsTouching(player);
-        print(playerPresent);
 
         for (int i = 0; i < transform.childCount; i++)
         {
             gameObjects.Add(transform.GetChild(i).gameObject);
+            //if (gameObjects[i].CompareTag("VCam"))
+            //{
+
+            //}
             gameObjects[i].SetActive(playerPresent);
         }
     }
