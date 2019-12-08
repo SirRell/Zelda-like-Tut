@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Animator anim;
     public GameObject deathFX;
     protected Patrol patroller;
+    protected FireProjectiles shooter;
 
 
     protected virtual void Awake()
@@ -32,6 +33,7 @@ public class Enemy : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         patroller = GetComponent<Patrol>();
+        shooter = GetComponent<FireProjectiles>();
     }
 
     protected virtual void OnEnable()

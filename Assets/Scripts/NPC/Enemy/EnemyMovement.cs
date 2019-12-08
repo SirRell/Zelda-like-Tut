@@ -7,18 +7,26 @@ public class EnemyMovement : Enemy
     Transform target;
     public float chaseRadius;
     public float attackRadius;
+    public AudioClip wakeUpSound;
     Vector2 homePosition;
+
+    AudioSource audioSource;
 
     protected override void Awake()
     {
         base.Awake();
         homePosition = transform.position;
         target = GameObject.FindWithTag("Player").transform;
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
+        if (moveSpeed == 0)
+            anim.SetBool("stationary", true);
+
         if ((Vector2)transform.position != homePosition)
             transform.position = homePosition;
         StartCoroutine(CheckDistance());
@@ -40,6 +48,8 @@ public class EnemyMovement : Enemy
                 if (currentState == EnemyState.Idle)
                 {
                     anim.SetTrigger("Wakeup");
+                    if (wakeUpSound != null)
+                        audioSource.PlayOneShot(wakeUpSound);
                     yield return new WaitForSeconds(.5f);
 
                     ChangeState(EnemyState.Chase);
@@ -60,7 +70,6 @@ public class EnemyMovement : Enemy
             {
                 if (currentState != EnemyState.Stagger)
                 {
-
                     if (patroller != null)
                     {
                         patroller.patroling = true;
@@ -71,6 +80,11 @@ public class EnemyMovement : Enemy
                         }
                         ChangeState(EnemyState.Patrol);
                         yield return null;
+                    }
+
+                    if (shooter != null)
+                    {
+                        shooter.firing = false;
                     }
 
                     Vector2 temp = Vector2.MoveTowards(transform.position, homePosition, moveSpeed * Time.deltaTime);
@@ -88,7 +102,13 @@ public class EnemyMovement : Enemy
             // Within Attack Radius
             else if (distFromTarget <= attackRadius)
             {
-                if (currentState == EnemyState.Chase)
+                if(shooter != null)
+                {
+                    shooter.firing = true;
+                    ChangeState(EnemyState.Attack);
+                    UpdateAnimation((target.position - transform.position).normalized);
+                }
+                else if (currentState == EnemyState.Chase)
                 {
                     ChangeState(EnemyState.Attack);
                     StartCoroutine(Attack());

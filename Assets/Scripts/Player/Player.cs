@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+public enum PlayerState
+{
+    Walk,
+    Attack,
+    Interact,
+    Stagger
+}
+
 public class Player : MonoBehaviour, IDamageable
 {
-    public enum PlayerState
-    {
-        Walk,
-        Attack,
-        Interact,
-        Stagger
-    }
-
     protected Rigidbody2D rb;
     public PlayerState currentState;
     public float maxHealth = 5f;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour, IDamageable
     public float strength = 1f;
     public event Action DamageTaken;
     public event Action HealthGiven;
+    protected PlayerSounds sounds;
 
     protected virtual void Start()
     {
@@ -33,6 +35,8 @@ public class Player : MonoBehaviour, IDamageable
 
         if(InfoManager.Instance.NewPlayerPosition != Vector2.zero)
             transform.position = InfoManager.Instance.NewPlayerPosition;
+
+        sounds = GetComponent<PlayerSounds>();
     }
 
     public void Destroy()
@@ -43,6 +47,7 @@ public class Player : MonoBehaviour, IDamageable
     public void TakeDamage(float damageTaken, GameObject damageGiver)
     {
         currHealth -= damageTaken;
+        sounds.PlayClip(sounds.playerDamaged);
         DamageTaken?.Invoke();
         if (currHealth <= 0f)
         {

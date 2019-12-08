@@ -1439,7 +1439,6 @@ SpriteAtlas:
   - {fileID: -8841936248928892492, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 7495320969501026803, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 1460043806165005221, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
-  - {fileID: 5849325189442884660, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 4545352612990403588, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 8753186556605219898, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: -4289089391151631069, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
@@ -1456,6 +1455,7 @@ SpriteAtlas:
   - {fileID: -1991825025733801836, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 4546686275956030081, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 3260465681249809347, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
+  - {fileID: 5849325189442884660, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: -108185186312894436, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 1529650774630179173, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 2346192434483656938, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
@@ -3224,7 +3224,6 @@ SpriteAtlas:
   - objects_26
   - objects_27
   - objects_37
-  - objects_24
   - objects_36
   - objects_25
   - Fire1
@@ -3241,6 +3240,7 @@ SpriteAtlas:
   - objects_110
   - objects_111
   - objects_105
+  - Pebble Projectile
   - objects_116
   - objects_104
   - objects_117

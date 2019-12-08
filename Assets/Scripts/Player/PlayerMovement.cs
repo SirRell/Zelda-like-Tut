@@ -36,6 +36,7 @@ public class PlayerMovement : Player
     {
         anim.SetBool("attacking", true);
         ChangeState(PlayerState.Attack);
+        sounds.PlayClip(sounds.swordSwing);
         yield return null;
         anim.SetBool("attacking", false);
         yield return new WaitForSeconds(.33f);
@@ -71,6 +72,7 @@ public class PlayerMovement : Player
             if(other.GetComponent<IDamageable>() != null)
             {
                 other.GetComponent<IDamageable>().TakeDamage(strength, gameObject);
+                sounds.PlayClip(sounds.swordHit);
             }
         }
     }

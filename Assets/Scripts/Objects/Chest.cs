@@ -67,6 +67,7 @@ public class Chest : Interactable
     public void GiveItem()
     {
         player.GetComponent<Inventory>().ReceiveItem(contents);
+        GetComponent<Animator>().enabled = false;
         //contents = null;
     }
 }

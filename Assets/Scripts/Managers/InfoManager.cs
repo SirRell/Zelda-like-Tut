@@ -14,8 +14,8 @@ public class InfoManager : MonoBehaviour
     public int BossKeys { get; set; }
     public int Money { get; set; }
     public List<Items> items;
-    public Dictionary<string, bool> chests;
-    public Dictionary<string, bool> buttons;
+    public Dictionary<string, bool> chests = new Dictionary<string, bool>();
+    public Dictionary<string, bool> buttons = new Dictionary<string, bool>();
 
     void Awake()
     {
@@ -29,8 +29,6 @@ public class InfoManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         SceneManager.sceneLoaded += InitiateLevel;
-        chests = new Dictionary<string, bool>();
-        buttons = new Dictionary<string, bool>();
     }
 
     public void InitiateLevel(Scene scene, LoadSceneMode mode)

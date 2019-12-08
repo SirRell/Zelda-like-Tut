@@ -15,6 +15,7 @@ public class Collectable : MonoBehaviour
     public CollectableType type;
     public Sprite contextImage;
     public GameObject itemDisplay;
+    public AudioClip pickupSound;
     public float jumpStrength;
     public int jumps;
 
@@ -31,7 +32,7 @@ public class Collectable : MonoBehaviour
 
         GameObject display = Instantiate(itemDisplay, other.transform.position + Vector3.up * 1.5f, Quaternion.identity, other.transform);
         display.GetComponent<SpriteRenderer>().sprite = contextImage;
-
+        display.GetComponent<AudioSource>().PlayOneShot(pickupSound);
         Collect(other);
         //Make the item display bounce a little
         display.transform.DOLocalJump(Vector3.zero, jumpStrength, jumps, 1);
@@ -43,6 +44,6 @@ public class Collectable : MonoBehaviour
 
     public virtual void Collect(Collider2D other)
     {
-
+        
     }
 }

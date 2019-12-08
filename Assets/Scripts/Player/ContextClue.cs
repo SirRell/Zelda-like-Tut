@@ -28,13 +28,13 @@ public class ContextClue : MonoBehaviour
     
     public void Interacting()
     {
-        GetComponentInParent<Player>().ChangeState(Player.PlayerState.Interact);
+        GetComponentInParent<Player>().ChangeState(PlayerState.Interact);
         myRenderer.enabled = !myRenderer.enabled;
     }
 
     public void StopInteracting()
     {
-        GetComponentInParent<Player>().ChangeState(Player.PlayerState.Walk);
+        GetComponentInParent<Player>().ChangeState(PlayerState.Walk);
         myRenderer.enabled = false;
     }
 }

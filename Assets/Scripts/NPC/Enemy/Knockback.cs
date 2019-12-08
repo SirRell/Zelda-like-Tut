@@ -22,6 +22,6 @@ public class Knockback : MonoBehaviour
         if(transform.CompareTag("Enemy"))
             GetComponent<Enemy>().ChangeState(Enemy.EnemyState.Chase);
         if (transform.CompareTag("Player"))
-            GetComponent<Player>().ChangeState(Player.PlayerState.Walk);
+            GetComponent<Player>().ChangeState(PlayerState.Walk);
     }
 }

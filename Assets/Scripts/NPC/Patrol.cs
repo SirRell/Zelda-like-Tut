@@ -29,8 +29,6 @@ public class Patrol : MonoBehaviour
         if (Vector2.Distance(transform.position, currentGoal.position) <= float.Epsilon)
             ChangeGoal();
 
-
-
         Vector2 temp = Vector2.MoveTowards(transform.position, currentGoal.position,
             patrolSpeed * Time.deltaTime);
         rb.MovePosition(temp);
