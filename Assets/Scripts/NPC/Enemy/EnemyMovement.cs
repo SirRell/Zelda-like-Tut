@@ -5,10 +5,12 @@ using UnityEngine;
 public class EnemyMovement : Enemy
 {
     Transform target;
+
     public float chaseRadius;
     public float attackRadius;
     public AudioClip wakeUpSound;
     Vector2 homePosition;
+    bool playerInRange = false;
 
     AudioSource audioSource;
 
@@ -18,12 +20,15 @@ public class EnemyMovement : Enemy
         homePosition = transform.position;
         target = GameObject.FindWithTag("Player").transform;
         audioSource = GetComponent<AudioSource>();
+        GetComponentInChildren<CircleCollider2D>().radius = chaseRadius - .15f;
 
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
+        playerInRange = false;
+
         if (moveSpeed == 0)
             anim.SetBool("stationary", true);
 
@@ -32,41 +37,77 @@ public class EnemyMovement : Enemy
         StartCoroutine(CheckDistance());
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
+
+    }
+
     IEnumerator CheckDistance()
     {
         while (true)
         {
-            float distFromTarget = Vector2.Distance(target.position, transform.position);
-            // Within chase radius but not within attack radius, and target is still alive
-            if (distFromTarget <= chaseRadius && distFromTarget > attackRadius && target.gameObject.activeInHierarchy)
+            if (playerInRange)
             {
-                if (patroller != null)
+                float distFromTarget = Vector2.Distance(target.position, transform.position);
+                // Within chase radius but not within attack radius, and target is still alive
+                if (distFromTarget <= chaseRadius && distFromTarget > attackRadius && target.gameObject.activeInHierarchy)
                 {
-                    patroller.patroling = false;
+                    if (patroller != null)
+                    {
+                        patroller.patroling = false;
+                    }
+
+                    if (currentState == EnemyState.Idle)
+                    {
+                        anim.SetTrigger("Wakeup");
+                        if (wakeUpSound != null)
+                            audioSource.PlayOneShot(wakeUpSound);
+                        yield return new WaitForSeconds(.5f);
+
+                        ChangeState(EnemyState.Chase);
+                    }
+                    else if (currentState == EnemyState.Patrol)
+                    {
+                        ChangeState(EnemyState.Chase);
+                    }
+                    else if (currentState == EnemyState.Chase)
+                    {
+                        Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                        UpdateAnimation((temp - (Vector2)transform.position).normalized);
+                        rb.MovePosition(temp);
+                    }
+                }
+                else if (distFromTarget <= attackRadius)
+                {
+                    if (shooter != null)
+                    {
+                        shooter.firing = true;
+                        ChangeState(EnemyState.Attack);
+                        UpdateAnimation((target.position - transform.position).normalized);
+                    }
+                    else if (currentState == EnemyState.Chase)
+                    {
+                        ChangeState(EnemyState.Attack);
+                        StartCoroutine(Attack());
+                    }
                 }
 
-                if (currentState == EnemyState.Idle)
-                {
-                    anim.SetTrigger("Wakeup");
-                    if (wakeUpSound != null)
-                        audioSource.PlayOneShot(wakeUpSound);
-                    yield return new WaitForSeconds(.5f);
 
-                    ChangeState(EnemyState.Chase);
-                }
-                else if (currentState == EnemyState.Patrol)
-                {
-                    ChangeState(EnemyState.Chase);
-                }
-                else if (currentState == EnemyState.Chase)
-                {
-                    Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-                    UpdateAnimation((temp - (Vector2)transform.position).normalized);
-                    rb.MovePosition(temp);
-                }
             }
             // Far from target, or target is dead
-            else if (distFromTarget > chaseRadius || !target.gameObject.activeInHierarchy)
+            if (!playerInRange || !target.gameObject.activeInHierarchy)
             {
                 if (currentState != EnemyState.Stagger)
                 {
@@ -100,20 +141,6 @@ public class EnemyMovement : Enemy
                 }
             }
             // Within Attack Radius
-            else if (distFromTarget <= attackRadius)
-            {
-                if(shooter != null)
-                {
-                    shooter.firing = true;
-                    ChangeState(EnemyState.Attack);
-                    UpdateAnimation((target.position - transform.position).normalized);
-                }
-                else if (currentState == EnemyState.Chase)
-                {
-                    ChangeState(EnemyState.Attack);
-                    StartCoroutine(Attack());
-                }
-            }
             yield return new WaitForFixedUpdate();
         }
     }

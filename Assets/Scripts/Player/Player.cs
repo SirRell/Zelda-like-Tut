@@ -21,7 +21,7 @@ public class Player : MonoBehaviour, IDamageable
     public float strength = 1f;
     public event Action DamageTaken;
     public event Action HealthGiven;
-    protected PlayerSounds sounds;
+    public GameObject deathFX;
 
     protected virtual void Start()
     {
@@ -35,19 +35,21 @@ public class Player : MonoBehaviour, IDamageable
 
         if(InfoManager.Instance.NewPlayerPosition != Vector2.zero)
             transform.position = InfoManager.Instance.NewPlayerPosition;
-
-        sounds = GetComponent<PlayerSounds>();
     }
 
     public void Destroy()
     {
-        gameObject.SetActive(false);
+        GameObject deathEffects;
+        if(deathFX != null)
+            deathEffects = Instantiate(deathFX, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);        
     }
 
     public void TakeDamage(float damageTaken, GameObject damageGiver)
     {
         currHealth -= damageTaken;
-        sounds.PlayClip(sounds.playerDamaged);
+        //sounds.PlayClip(sounds.playerDamaged);
+        SoundsManager.instance.PlayClip(SoundsManager.Sound.PlayerDamaged);
         DamageTaken?.Invoke();
         if (currHealth <= 0f)
         {

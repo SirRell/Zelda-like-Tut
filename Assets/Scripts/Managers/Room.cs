@@ -22,6 +22,8 @@ public class Room : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (!other.gameObject.activeInHierarchy)
+                return;
             foreach (GameObject go in gameObjects)
             {
                 go.SetActive(false);

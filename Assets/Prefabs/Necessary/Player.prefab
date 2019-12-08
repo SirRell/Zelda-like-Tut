@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2563314732267516045}
   - component: {fileID: 7304385701115469855}
   - component: {fileID: 2563314732267516042}
-  - component: {fileID: 6020652564825482694}
   - component: {fileID: 2563314732267516041}
   - component: {fileID: 2563314732267516043}
   - component: {fileID: 8470431997206606853}
@@ -161,21 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d345907ec8e5bcd48a03708ab5d121c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6020652564825482694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2563314732267516037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deef3ed1885f0ee42a6ef8a350a7d0f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swordSwing: {fileID: 8300000, guid: 585789c12e08c5f4db32bbf8476c291e, type: 3}
-  playerDamaged: {fileID: 8300000, guid: 3c3ad6290dc7e8348a718e0db672d4c1, type: 3}
-  swordHit: {fileID: 8300000, guid: 8fb5c1d139bea4040ab353eea67a59a5, type: 3}
 --- !u!61 &2563314732267516041
 BoxCollider2D:
   m_ObjectHideFlags: 0
