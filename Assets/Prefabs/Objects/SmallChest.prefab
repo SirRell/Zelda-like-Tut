@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4337379523245491652}
   - component: {fileID: 4337379523245491656}
   - component: {fileID: 4337379523245491657}
+  - component: {fileID: 1069526018317327010}
   m_Layer: 8
   m_Name: SmallChest
   m_TagString: Untagged
@@ -143,10 +144,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextImage: {fileID: 8387997009269029421, guid: da3638d5041094649ab78df54e5f40a2,
     type: 3}
-  contents: {fileID: 11400000, guid: 68e1a533916f93c48b0268ceb8b5f3da, type: 2}
+  contents: {fileID: 0}
   openSprite: {fileID: 318953615281452700, guid: da3638d5041094649ab78df54e5f40a2,
     type: 3}
   isOpen: 0
+--- !u!114 &1069526018317327010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4337379523245491651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b93db24c4a0bff48a1902f9cfcf6b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectableItems:
+  - {fileID: 4770482526788700256, guid: 30750fe17fd4bdf44807ff0cc19d654f, type: 3}
+  - {fileID: 2348076574129299588, guid: 30f38eb20d044de429a5770909430f09, type: 3}
+  - {fileID: 5722177240275926255, guid: eed5e8e6a15214a489b97ee181440277, type: 3}
+  - {fileID: 6715578678102099431, guid: 68ec3f4582292e344be2ce87c222d481, type: 3}
+  chanceOfSpawn: 100
 --- !u!1 &5474113638090941239
 GameObject:
   m_ObjectHideFlags: 0

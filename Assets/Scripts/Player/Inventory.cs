@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     ContextClue context;
     GameObject itemToShow;
     TextMeshProUGUI dialogueText;
-    bool receivingItem, receivedItem;
+    bool receivedItem;
 
     public GameObject dialogueBox;
     public List<Item> MyItems;
@@ -37,9 +37,8 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if(receivingItem && receivedItem && Input.GetButtonDown("Submit"))
+        if(receivedItem && Input.GetButtonDown("Submit"))
         {
-            receivingItem = false;
             receivedItem = false;
             GetComponent<Animator>().SetBool("receiveItem", false);
             GetComponent<PlayerMovement>().enabled = true;
@@ -50,11 +49,9 @@ public class Inventory : MonoBehaviour
 
     public void ReceiveChestItem(GameObject itemToReceiveGO)
     {
-        receivingItem = true;
         Item itemToReceive = itemToReceiveGO.GetComponent<Item>();
 
         dialogueText.text = "You found a " + itemToReceive.itemName + "\n" + itemToReceive.itemDescription;
-        dialogueBox.SetActive(true);
 
         itemToShow = itemToReceiveGO;
 
@@ -104,6 +101,7 @@ public class Inventory : MonoBehaviour
     {
         context.GetComponent<SpriteRenderer>().enabled = true;
         ReceiveItem(itemToShow);
+        dialogueBox.SetActive(true);
         receivedItem = true;
     }
 }

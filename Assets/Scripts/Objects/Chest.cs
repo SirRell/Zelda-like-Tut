@@ -9,7 +9,6 @@ public class Chest : Interactable
     public bool isOpen;
     string uniqueID;
 
-
     override protected void Start()
     {
         base.Start();
@@ -66,6 +65,11 @@ public class Chest : Interactable
 
     public void GiveItem()
     {
+        if (contents == null)
+        {
+            contents = gameObject.GetComponent<Collectables>().GetRandomItem();
+        }
+
         player.GetComponent<Inventory>().ReceiveChestItem(contents);
         GetComponent<Animator>().enabled = false;
         //contents = null;

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2505416593552953627}
   - component: {fileID: 7724014276873439120}
   - component: {fileID: 3333970151095592480}
+  - component: {fileID: -8952137821220418202}
   m_Layer: 10
   m_Name: LogEnemy
   m_TagString: Enemy
@@ -280,3 +281,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8952137821220418202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239355983864286889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b93db24c4a0bff48a1902f9cfcf6b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectableItems:
+  - {fileID: 4770482526788700256, guid: 30750fe17fd4bdf44807ff0cc19d654f, type: 3}
+  - {fileID: 5722177240275926255, guid: eed5e8e6a15214a489b97ee181440277, type: 3}
+  chanceOfSpawn: 50
