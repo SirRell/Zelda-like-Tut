@@ -140,12 +140,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f1e5bf2024e0248960feca75b238cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
   contextImage: {fileID: -6998631668141411158, guid: da3638d5041094649ab78df54e5f40a2,
-    type: 3}
-  itemDisplay: {fileID: 1670825299326003828, guid: 459ccf261f606864e910461641a00f4d,
     type: 3}
   pickupSound: {fileID: 8300000, guid: 98a2305bd01af714fbe36ac9e4d9f653, type: 3}
   jumpStrength: 1
   jumps: 1
+  itemDisplay: {fileID: 1670825299326003828, guid: 459ccf261f606864e910461641a00f4d,
+    type: 3}
+  type: 4
+  itemName: Coin
+  itemDescription: One man's trash...
   coinValue: 1

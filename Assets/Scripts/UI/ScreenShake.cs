@@ -1,30 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 using DG.Tweening;
 
 public class ScreenShake : MonoBehaviour
 {
-    public float endValue, duration, magnitude;
-    Camera cam;
+    public float originalOrthoValue = 5, endOrthoValue, duration, magnitude;
+    CinemachineVirtualCamera cam;
     private void Start()
     {
         Player player = FindObjectOfType<Player>();
         player.DamageTaken += Shake;
-        cam = GetComponent<Camera>();
+        cam = GetComponent<CinemachineVirtualCamera>();
     }
 
     public void Shake()
     {
-        StartCoroutine(CamShake());
+        if(isActiveAndEnabled)
+            StartCoroutine(CamShake());
+        transform.DOShakePosition(duration, magnitude);
     }
 
     public IEnumerator CamShake()
     {
-        transform.DOShakePosition(duration, magnitude);
+        float t = 0;
+        //Punch the camera inward
+        while(cam.m_Lens.OrthographicSize != endOrthoValue)
+        {
+            cam.m_Lens.OrthographicSize = Mathf.Lerp(originalOrthoValue, endOrthoValue, t);
+            t += Time.deltaTime * (1 / duration);
+            yield return null;
+        }
 
-        cam.DOOrthoSize(endValue, duration / 2);
-        yield return new WaitForSeconds(duration / 2);
-        cam.DOOrthoSize(6, duration / 2);
+        t = 0;
+
+        while (cam.m_Lens.OrthographicSize != originalOrthoValue)
+        {
+            cam.m_Lens.OrthographicSize = Mathf.Lerp(endOrthoValue, originalOrthoValue, t);
+            t += Time.deltaTime * (1 / duration);
+            yield return null;
+        }
     }
 }

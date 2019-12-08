@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public GameObject deathFX;
     protected Patrol patroller;
     protected FireProjectiles shooter;
+    protected Collectables newItem;
 
 
     protected virtual void Awake()
@@ -34,18 +35,12 @@ public class Enemy : MonoBehaviour, IDamageable
         anim = GetComponent<Animator>();
         patroller = GetComponent<Patrol>();
         shooter = GetComponent<FireProjectiles>();
+        newItem = GetComponent<Collectables>();
     }
 
     protected virtual void OnEnable()
     {
         currHealth = maxHealth;
-    }
-
-    public virtual void Destroy()
-    {
-        gameObject.SetActive(false);
-        deathFX = Instantiate(deathFX, transform.position, Quaternion.identity);
-        Destroy(deathFX, 1f);
     }
 
     public void TakeDamage(float damageTaken, GameObject damageGiver)
@@ -64,6 +59,16 @@ public class Enemy : MonoBehaviour, IDamageable
                 StartCoroutine(kB.KnockBack(damageGiver.transform));
             }
         }
+    }
+
+    public virtual void Destroy()
+    {
+        gameObject.SetActive(false);
+        GameObject deathEffect = Instantiate(deathFX, transform.position, Quaternion.identity);
+        GameObject droppedItem = newItem.GetRandomItem();
+        if(droppedItem != null)
+            Instantiate(droppedItem, transform.position, Quaternion.identity);
+        Destroy(deathEffect, 1f);
     }
 
     public void ChangeState(EnemyState newState)

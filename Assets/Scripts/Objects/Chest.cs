@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Chest : Interactable
 {
-    public Items contents;
+    public GameObject contents;
     public Sprite openSprite;
     public bool isOpen;
     string uniqueID;
-
 
     override protected void Start()
     {
@@ -66,7 +65,12 @@ public class Chest : Interactable
 
     public void GiveItem()
     {
-        player.GetComponent<Inventory>().ReceiveItem(contents);
+        if (contents == null)
+        {
+            contents = gameObject.GetComponent<Collectables>().GetRandomItem();
+        }
+
+        player.GetComponent<Inventory>().ReceiveChestItem(contents);
         GetComponent<Animator>().enabled = false;
         //contents = null;
     }

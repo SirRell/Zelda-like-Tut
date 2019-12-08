@@ -10,7 +10,7 @@ TextureImporter:
     second: Open Small Chest
   - first:
       213: 8333231276030249781
-    second: objects_2
+    second: Shrub
   - first:
       213: -4430392651179603617
     second: HealthContainer_Full
@@ -67,7 +67,7 @@ TextureImporter:
     second: Opening Chest 2
   - first:
       213: -6883905864151536645
-    second: objects_21
+    second: ShrubDestroy1
   - first:
       213: 7206194005228167239
     second: objects_22
@@ -112,7 +112,7 @@ TextureImporter:
     second: objects_35
   - first:
       213: 4545352612990403588
-    second: objects_36
+    second: ShrubDestroy4
   - first:
       213: 1460043806165005221
     second: objects_37
@@ -424,10 +424,10 @@ TextureImporter:
     second: objects_139
   - first:
       213: 318953615281452700
-    second: objects_1
+    second: ShrubDestroy2
   - first:
       213: 2002165265138813586
-    second: objects_28
+    second: ShrubDestroy3
   - first:
       213: -2376591590991214436
     second: HeartIcon
@@ -569,7 +569,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_2
+      name: Shrub
       rect:
         serializedVersion: 2
         x: 34
@@ -968,7 +968,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_21
+      name: ShrubDestroy1
       rect:
         serializedVersion: 2
         x: 71
@@ -1115,7 +1115,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_36
+      name: ShrubDestroy4
       rect:
         serializedVersion: 2
         x: 168
@@ -2984,7 +2984,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_1
+      name: ShrubDestroy2
       rect:
         serializedVersion: 2
         x: 100
@@ -3026,7 +3026,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_28
+      name: ShrubDestroy3
       rect:
         serializedVersion: 2
         x: 133

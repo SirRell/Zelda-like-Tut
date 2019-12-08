@@ -8,14 +8,16 @@ using TMPro;
 public class Inventory : MonoBehaviour
 {
     ContextClue context;
-    public GameObject dialogueBox;
+    GameObject itemToShow;
     TextMeshProUGUI dialogueText;
-    public List<Items> MyItems;
+    bool receivedItem;
+
+    public GameObject dialogueBox;
+    public List<Item> MyItems;
     public int commonKeys;
     public int uncommonKeys;
     public int bossKeys;
     public int money;
-    bool receivingItem;
     public event Action MoneyChanged;
     
 
@@ -35,9 +37,9 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if(receivingItem && Input.GetButtonDown("Submit"))
+        if(receivedItem && Input.GetButtonDown("Submit"))
         {
-            receivingItem = false;
+            receivedItem = false;
             GetComponent<Animator>().SetBool("receiveItem", false);
             GetComponent<PlayerMovement>().enabled = true;
             context.StopInteracting();
@@ -45,35 +47,43 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void ReceiveItem(Items itemToReceive)
+    public void ReceiveChestItem(GameObject itemToReceiveGO)
     {
-        receivingItem = true;
+        Item itemToReceive = itemToReceiveGO.GetComponent<Item>();
 
         dialogueText.text = "You found a " + itemToReceive.itemName + "\n" + itemToReceive.itemDescription;
-        dialogueBox.SetActive(true);
 
-        if (itemToReceive.isKey)
-        {
-            commonKeys++;
-        }
+        itemToShow = itemToReceiveGO;
+
         MyItems.Add(itemToReceive);
-        context.GetComponent<SpriteRenderer>().sprite = itemToReceive.itemDisplay;
+        context.GetComponent<SpriteRenderer>().sprite = itemToReceive.contextImage;
         Animate();
     }
 
-    public void ReceiveCollectable(Collectable collectableToReceive)
+    public void ReceiveItem(GameObject itemToReceiveGO)
     {
-        switch (collectableToReceive.type)
+        Item itemToReceive = itemToReceiveGO.GetComponent<Item>();
+        switch (itemToReceive.type)
         {
-            case CollectableType.Heart:
+            case ItemType.CommonKey:
+                commonKeys++;
                 break;
-            case CollectableType.Money:
-                money += collectableToReceive.GetComponentInParent<Coin>().coinValue;
+            case ItemType.UncommonKey:
+                uncommonKeys++;
+                break;
+            case ItemType.BossKey:
+                bossKeys++;
+                break;
+            case ItemType.Heart:
+                itemToReceive.Collect(this);
+                break;
+            case ItemType.Money:
+                money += itemToReceiveGO.GetComponent<Coin>().coinValue;
                 MoneyChanged?.Invoke();
                 break;
-            case CollectableType.Bomb:
+            case ItemType.Bomb:
                 break;
-            case CollectableType.Stick:
+            case ItemType.Stick:
                 break;
             default:
                 break;
@@ -90,5 +100,8 @@ public class Inventory : MonoBehaviour
     public void ShowItem()
     {
         context.GetComponent<SpriteRenderer>().enabled = true;
+        ReceiveItem(itemToShow);
+        dialogueBox.SetActive(true);
+        receivedItem = true;
     }
 }
