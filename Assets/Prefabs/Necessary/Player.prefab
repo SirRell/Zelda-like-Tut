@@ -129,6 +129,7 @@ MonoBehaviour:
   maxHealth: 6
   currHealth: 0
   strength: 1
+  deathFX: {fileID: 2009807577534706467, guid: c428e7811fffcb84ca688099d387f77e, type: 3}
   speed: 4
 --- !u!114 &7304385701115469855
 MonoBehaviour:

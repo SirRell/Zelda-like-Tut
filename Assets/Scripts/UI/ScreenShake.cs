@@ -1,30 +1,31 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-using DG.Tweening;
 
 public class ScreenShake : MonoBehaviour
 {
-    public float originalOrthoValue = 5, endOrthoValue, duration, magnitude;
+    public float originalOrthoValue = 6f, endOrthoValue = 5.5f, duration, magnitude, ampGain = 0.4f;
     CinemachineVirtualCamera cam;
+    CinemachineBasicMultiChannelPerlin camNoise;
+
     private void Start()
     {
         Player player = FindObjectOfType<Player>();
         player.DamageTaken += Shake;
         cam = GetComponent<CinemachineVirtualCamera>();
+        camNoise = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
     public void Shake()
     {
         if(isActiveAndEnabled)
             StartCoroutine(CamShake());
-        transform.DOShakePosition(duration, magnitude);
     }
 
     public IEnumerator CamShake()
     {
         float t = 0;
+        camNoise.m_AmplitudeGain = ampGain;
         //Punch the camera inward
         while(cam.m_Lens.OrthographicSize != endOrthoValue)
         {
@@ -41,5 +42,6 @@ public class ScreenShake : MonoBehaviour
             t += Time.deltaTime * (1 / duration);
             yield return null;
         }
+        camNoise.m_AmplitudeGain = 0;
     }
 }

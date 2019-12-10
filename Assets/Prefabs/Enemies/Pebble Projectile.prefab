@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1233933911674758199}
   - component: {fileID: 5453223456779640270}
   - component: {fileID: 98812358725766737}
-  - component: {fileID: 2451662793316971061}
+  - component: {fileID: -8668003424196248534}
   m_Layer: 9
   m_Name: Pebble Projectile
   m_TagString: Untagged
@@ -120,7 +120,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
---- !u!114 &2451662793316971061
+--- !u!114 &-8668003424196248534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,10 +129,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 325542462820646777}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1438ebad26e026a40b95889fd030d535, type: 3}
+  m_Script: {fileID: 11500000, guid: d1898f9e61f1e224098a880cfab651ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 1
   moveSpeed: 5
   lifetime: 5
   torque: 5

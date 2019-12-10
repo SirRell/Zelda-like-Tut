@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IDamageable
 {
     public float damage = 1;
     public float moveSpeed = 1;
     public float lifetime = 5;
     public float torque;
-    float lifetimeTimer;
+    protected float lifetimeTimer;
     //ParticleSystem particles;
 
 
@@ -20,7 +20,6 @@ public class Projectile : MonoBehaviour
         GetComponent<Rigidbody2D>().AddTorque(torque);
     }
 
-    // Update is called once per frame
     void Update()
     {
         lifetimeTimer -= Time.deltaTime;
@@ -44,9 +43,15 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public virtual void TakeDamage(float damageTaken, GameObject damageGiver)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void Destroy()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.SetActive(false);
         //Instantiate(particles, transform.position, Quaternion.identity);
+        Destroy(gameObject, 2);
     }
 }
