@@ -71,11 +71,14 @@ public class EnemyMovement : Enemy
 
                     if (currentState == EnemyState.Idle)
                     {
+                        float delay = 0;
                         anim.SetTrigger("Wakeup");
                         if (wakeUpSound != null)
                             audioSource.PlayOneShot(wakeUpSound);
-                        yield return new WaitForSeconds(.5f);
-
+                        yield return new WaitForEndOfFrame();
+                        AnimatorClipInfo[] clips = anim.GetCurrentAnimatorClipInfo(0);
+                        delay = clips[0].clip.length;
+                        yield return new WaitForSeconds(delay);
                         ChangeState(EnemyState.Chase);
                     }
                     else if (currentState == EnemyState.Patrol)
@@ -147,9 +150,14 @@ public class EnemyMovement : Enemy
 
     IEnumerator Attack()
     {
-        target.GetComponent<IDamageable>().TakeDamage(baseAttack, gameObject);
+        float delay = 0;
         Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-        yield return new WaitForSeconds(.5f);
+        anim.SetTrigger("Attack");
+        target.GetComponent<IDamageable>().TakeDamage(baseAttack, gameObject);
+        yield return new WaitForEndOfFrame();
+        AnimatorClipInfo[] clips = anim.GetCurrentAnimatorClipInfo(0);
+        delay = clips[0].clip.length;
+        yield return new WaitForSeconds(Mathf.Max(.5f, delay));
         ChangeState(EnemyState.Chase);
         UpdateAnimation((temp - (Vector2)transform.position).normalized);
     }

@@ -136,3 +136,5 @@ MonoBehaviour:
   moveSpeed: 5
   lifetime: 5
   torque: 5
+  particles: {fileID: 6962919177089233885, guid: 0fa0dce3a698dd441b257b33f5efb6ec,
+    type: 3}

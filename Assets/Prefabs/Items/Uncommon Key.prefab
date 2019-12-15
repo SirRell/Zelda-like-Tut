@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2348076574129299588, guid: 30f38eb20d044de429a5770909430f09,
         type: 3}
       propertyPath: m_Name
-      value: UnCommon Key
+      value: Uncommon Key
       objectReference: {fileID: 0}
     - target: {fileID: 6367404928463612166, guid: 30f38eb20d044de429a5770909430f09,
         type: 3}

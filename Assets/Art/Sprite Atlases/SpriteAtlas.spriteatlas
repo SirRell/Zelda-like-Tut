@@ -42,7 +42,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 6b839cecf14071e4c9b14de007e3cca1, type: 3}
-    totalSpriteSurfaceArea: 542476
+    totalSpriteSurfaceArea: 553955
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -1488,6 +1488,41 @@ SpriteAtlas:
   - {fileID: -2639854583086408205, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: 243028321930452633, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
   - {fileID: -2376591590991214436, guid: da3638d5041094649ab78df54e5f40a2, type: 3}
+  - {fileID: 6922684978030928416, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -2456020259341744386, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -1734032226162642314, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -1066573952649008638, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 687425833008528411, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 7190339226417371264, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -1644947539467524027, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 3966056598969477522, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 6363447515598099143, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 251987133614055564, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 8088297407531052250, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 7209628147367737023, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 7736058273749550567, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 6595678811532957237, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 8932430731312830890, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -6285972059019997060, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 3382246341798674175, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -726634292765489925, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -9052904014459046893, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -2831881569429371564, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -754777123836521649, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -2954814174934864707, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -8730674230366055748, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -7309169594432983604, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -4131807888556131283, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -2430310237430961680, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 2063777203212614812, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 7645116134730174544, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 2456482443685657501, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 5716500116767937491, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -2659691687596638182, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: -135888892477809818, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 5505533137490629192, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 7756867850845855559, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 5745301174396111285, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
   - {fileID: -464034680190023423, guid: d7e76e78d593a4e4eb647de6adbf2e6a, type: 3}
   - {fileID: -6069640938520168933, guid: d7e76e78d593a4e4eb647de6adbf2e6a, type: 3}
   - {fileID: 1999647984331235364, guid: d7e76e78d593a4e4eb647de6adbf2e6a, type: 3}
@@ -3273,6 +3308,41 @@ SpriteAtlas:
   - Button_Pressed
   - 3Dot
   - HeartIcon
+  - Ogre_33
+  - Ogre_23
+  - Ogre_22
+  - Ogre_18
+  - Ogre_21
+  - Ogre_19
+  - Ogre_20
+  - Ogre_12
+  - Ogre_13
+  - Ogre_10
+  - Ogre_29
+  - Ogre_11
+  - Ogre_28
+  - Ogre_16
+  - Ogre_17
+  - Ogre_14
+  - Ogre_15
+  - Ogre_9
+  - Ogre_8
+  - Ogre_7
+  - Ogre_6
+  - Ogre_5
+  - Ogre_4
+  - Ogre_3
+  - Ogre_2
+  - Ogre_1
+  - Ogre_0
+  - Ogre_34
+  - Ogre_27
+  - Ogre_30
+  - Ogre_26
+  - Ogre_31
+  - Ogre_25
+  - Ogre_32
+  - Ogre_24
   - Inner_48
   - Inner_49
   - Inner_28

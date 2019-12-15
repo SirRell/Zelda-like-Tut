@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour, IDamageable
     public float lifetime = 5;
     public float torque;
     protected float lifetimeTimer;
-    //ParticleSystem particles;
+    public ParticleSystem particles;
 
 
     // Start is called before the first frame update
@@ -35,11 +35,11 @@ public class Projectile : MonoBehaviour, IDamageable
         if (player != null)
         {
             player.TakeDamage(damage, gameObject);
-            Destroy(gameObject);
+            Destroy();
         }
         else
         {
-            Destroy(gameObject);
+            Destroy();
         }
     }
 
@@ -50,8 +50,8 @@ public class Projectile : MonoBehaviour, IDamageable
 
     public void Destroy()
     {
+        Instantiate(particles, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
-        //Instantiate(particles, transform.position, Quaternion.identity);
         Destroy(gameObject, 2);
     }
 }
