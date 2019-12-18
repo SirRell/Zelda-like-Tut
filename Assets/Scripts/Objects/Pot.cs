@@ -38,7 +38,7 @@ public class Pot : MonoBehaviour, IDamageable
 
     void SpawnItem(GameObject contents)
     {
-        Instantiate(contents, transform.position, Quaternion.identity);
+        Instantiate(contents, transform.position, contents.transform.rotation);
     }
 
     void Disable()

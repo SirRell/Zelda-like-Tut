@@ -18,7 +18,10 @@ public class Inventory : MonoBehaviour
     public int uncommonKeys;
     public int bossKeys;
     public int money;
+    public int currentAmmo, maxAmmo = 10;
     public event Action MoneyChanged;
+    public event Action AmmoChanged;
+    public event Action MagicChanged;
     
 
     private void Start()
@@ -29,7 +32,7 @@ public class Inventory : MonoBehaviour
         uncommonKeys = InfoManager.Instance.UnCommonKeys;
         bossKeys = InfoManager.Instance.BossKeys;
         money = InfoManager.Instance.Money;
-
+        currentAmmo = InfoManager.Instance.AmmoLeft;
         //dialogueBox = GameObject.Find("Dialogue Box");
         dialogueText = dialogueBox.GetComponentInChildren<TextMeshProUGUI>();
 
@@ -60,30 +63,76 @@ public class Inventory : MonoBehaviour
         Animate();
     }
 
-    public void ReceiveItem(GameObject itemToReceiveGO)
+    public void ReceiveItem(GameObject itemToReceiveGO, int amount = 1)
     {
         Item itemToReceive = itemToReceiveGO.GetComponent<Item>();
         switch (itemToReceive.type)
         {
             case ItemType.CommonKey:
-                commonKeys++;
+                commonKeys += amount;
                 break;
             case ItemType.UncommonKey:
-                uncommonKeys++;
+                uncommonKeys += amount;
                 break;
             case ItemType.BossKey:
-                bossKeys++;
+                bossKeys += amount;
                 break;
             case ItemType.Heart:
-                itemToReceive.Collect(this);
+                Player player = GetComponent<Player>();
+                player.Heal(amount);
+                //itemToReceive.Collect(this);
                 break;
             case ItemType.Money:
-                money += itemToReceiveGO.GetComponent<Coin>().coinValue;
+                money += amount;
                 MoneyChanged?.Invoke();
                 break;
             case ItemType.Bomb:
                 break;
             case ItemType.Stick:
+                break;
+            case ItemType.Arrow:
+                currentAmmo += amount;
+                AmmoChanged?.Invoke();
+                break;
+            case ItemType.MagicBottle:
+                MagicChanged?.Invoke();
+                break;
+            default:
+                break;
+        }
+        if(itemToReceive.pickupSound != null)
+        {
+            SoundsManager.instance.GetComponent<AudioSource>().PlayOneShot(itemToReceive.pickupSound);
+        }
+    }
+
+    public void RemoveItem(ItemType itemToRemove, int amount = 1)
+    {
+        switch (itemToRemove)
+        {
+            case ItemType.CommonKey:
+                commonKeys-= amount;
+                break;
+            case ItemType.UncommonKey:
+                uncommonKeys -= amount;
+                break;
+            case ItemType.BossKey:
+                bossKeys -= amount;
+                break;
+            case ItemType.Heart:
+                break;
+            case ItemType.Money:
+                money -= amount;
+                MoneyChanged?.Invoke();
+                break;
+            case ItemType.Bomb:
+                break;
+            case ItemType.Stick:
+                break;
+            case ItemType.Arrow:
+
+                currentAmmo -= amount;
+                AmmoChanged?.Invoke();
                 break;
             default:
                 break;

@@ -14,10 +14,11 @@ GameObject:
   - component: {fileID: 2563314732267516045}
   - component: {fileID: 7304385701115469855}
   - component: {fileID: 2563314732267516042}
+  - component: {fileID: 2592909627999114357}
   - component: {fileID: 2563314732267516041}
   - component: {fileID: 2563314732267516043}
   - component: {fileID: 8470431997206606853}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -149,6 +150,8 @@ MonoBehaviour:
   uncommonKeys: 0
   bossKeys: 0
   money: 0
+  currentAmmo: 0
+  maxAmmo: 10
 --- !u!114 &2563314732267516042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +164,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d345907ec8e5bcd48a03708ab5d121c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2592909627999114357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563314732267516037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68a2163bb908564e8bdb1f19e7007e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1651205131788203646, guid: efeb99da5d5a8b34898e6f921cdda513,
+    type: 3}
+  shootDelayRange: {x: 0.5, y: 0.5}
+  firing: 0
 --- !u!61 &2563314732267516041
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -312,7 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2563314733004180867}
   - component: {fileID: 2563314733004180866}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UpHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2563314733489179249}
   - component: {fileID: 2563314733489179248}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LeftHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -434,7 +453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2563314733748071294}
   - component: {fileID: 2563314733748071265}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DownHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2563314733749886461}
   - component: {fileID: 2563314733749886460}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RightHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +576,7 @@ GameObject:
   - component: {fileID: 448932800369786078}
   - component: {fileID: 6553614567722473152}
   - component: {fileID: 6144749814940052930}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Context
   m_TagString: Untagged
   m_Icon: {fileID: 0}

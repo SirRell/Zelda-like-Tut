@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4316322453388850224}
   - component: {fileID: 4420071123526407561}
   - component: {fileID: 3816063461480126778}
-  - component: {fileID: 5556114054894128392}
+  - component: {fileID: 6357611722683151289}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -128,7 +128,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &5556114054894128392
+--- !u!114 &6357611722683151289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5722177240275926255}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6072e27c2576a84f8f16757d33432f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1eb9c4aae9721554db6ca74c4515947d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   contextImage: {fileID: -2376591590991214436, guid: da3638d5041094649ab78df54e5f40a2,
@@ -150,4 +150,4 @@ MonoBehaviour:
   type: 3
   itemName: Heart
   itemDescription: You feel slightly rejuvenated
-  amountToHeal: 1
+  value: 1

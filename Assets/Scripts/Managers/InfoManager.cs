@@ -7,8 +7,9 @@ public class InfoManager : MonoBehaviour
     static InfoManager instance;
     public static InfoManager Instance { get { return instance; } }
     public Vector2 NewPlayerPosition { get; set; }
-    public Vector2 NewCameraBoundsMin, NewCameraBoundsMax;
     public float PlayerHealth { get; set; }
+    public float PlayerMagic { get; set; }
+    public int AmmoLeft { get; set; }
     public int CommonKeys { get; set; }
     public int UnCommonKeys { get; set; }
     public int BossKeys { get; set; }
@@ -40,12 +41,14 @@ public class InfoManager : MonoBehaviour
     public void UpdateStats()
     {
         GameObject player = GameObject.FindWithTag("Player");
+        Inventory playerInventory = player.GetComponent<Inventory>();
         PlayerHealth = player.GetComponent<Player>().currHealth;
-        items = player.GetComponent<Inventory>().MyItems;
-        CommonKeys = player.GetComponent<Inventory>().commonKeys;
-        UnCommonKeys = player.GetComponent<Inventory>().uncommonKeys;
-        BossKeys = player.GetComponent<Inventory>().bossKeys;
-        Money = player.GetComponent<Inventory>().money;
+        items = playerInventory.MyItems;
+        CommonKeys = playerInventory.commonKeys;
+        UnCommonKeys = playerInventory.uncommonKeys;
+        BossKeys = playerInventory.bossKeys;
+        Money = playerInventory.money;
+        AmmoLeft = playerInventory.currentAmmo;
 
 
         //I may need this method when I start actually saving games

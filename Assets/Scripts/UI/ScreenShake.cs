@@ -44,4 +44,10 @@ public class ScreenShake : MonoBehaviour
         }
         camNoise.m_AmplitudeGain = 0;
     }
+
+    private void OnDisable()
+    {
+        cam.m_Lens.OrthographicSize = originalOrthoValue;
+        camNoise.m_AmplitudeGain = 0;
+    }
 }

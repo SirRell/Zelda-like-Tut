@@ -10,19 +10,26 @@ public enum ItemType
     Heart,
     Money,
     Bomb,
-    Stick
+    Stick,
+    Arrow,
+    MagicBottle
 }
 
 public class Item : MonoBehaviour
 {
+
     public Sprite contextImage;
     public AudioClip pickupSound;
     public float jumpStrength = 1;
     public int jumps = 1;
 
+    [Tooltip("Always 'CollectableContext' Prefab")]
     public GameObject itemDisplay;
     public ItemType type;
-    public string itemName, itemDescription;
+    public string itemName;
+    [Multiline]
+    public string itemDescription;
+    public int value = 1;
 
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -36,9 +43,8 @@ public class Item : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-        GameObject display = Instantiate(itemDisplay, other.transform.position + Vector3.up * 1.5f, Quaternion.identity, other.transform);
+        GameObject display = Instantiate(itemDisplay, other.transform.position + Vector3.up * 1.5f, transform.rotation, other.transform);
         display.GetComponent<SpriteRenderer>().sprite = contextImage;
-        display.GetComponent<AudioSource>().PlayOneShot(pickupSound);
         Collect(other.GetComponent<Inventory>());
 
         //Make the item display bounce a little
@@ -51,6 +57,6 @@ public class Item : MonoBehaviour
 
     public virtual void Collect(Inventory playerInventory)
     {
-
+        playerInventory.ReceiveItem(gameObject, value);
     }
 }

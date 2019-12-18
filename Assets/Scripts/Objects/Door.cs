@@ -66,7 +66,7 @@ public class Door : Interactable
             case DoorType.Key:
                 if(pI.commonKeys > 0)
                 {
-                    pI.commonKeys--;
+                    pI.RemoveItem(ItemType.CommonKey);
                     StartCoroutine(OpenDoor());
                 }
                 else
@@ -77,7 +77,7 @@ public class Door : Interactable
             case DoorType.UncommonKey:
                 if(pI.uncommonKeys > 0)
                 {
-                    pI.uncommonKeys--;
+                    pI.RemoveItem(ItemType.UncommonKey);
                     StartCoroutine(OpenDoor());
                 }
                 else
@@ -88,7 +88,7 @@ public class Door : Interactable
             case DoorType.BossKey:
                 if (pI.bossKeys > 0)
                 {
-                    pI.bossKeys--;
+                    pI.RemoveItem(ItemType.BossKey);
                     StartCoroutine(OpenDoor());
                 }
                 else

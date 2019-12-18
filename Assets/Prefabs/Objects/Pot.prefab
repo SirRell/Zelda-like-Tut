@@ -157,4 +157,5 @@ MonoBehaviour:
   collectableItems:
   - {fileID: 4770482526788700256, guid: 30750fe17fd4bdf44807ff0cc19d654f, type: 3}
   - {fileID: 5722177240275926255, guid: eed5e8e6a15214a489b97ee181440277, type: 3}
+  - {fileID: 4770482526788700256, guid: fc0091bc6e29d414bba21a27694c4f85, type: 3}
   chanceOfSpawn: 50

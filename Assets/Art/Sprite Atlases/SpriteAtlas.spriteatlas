@@ -42,10 +42,11 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 6b839cecf14071e4c9b14de007e3cca1, type: 3}
-    totalSpriteSurfaceArea: 553955
+    totalSpriteSurfaceArea: 554979
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 09effed098368b545974191d08f46d59, type: 3}
   - {fileID: 5580808760293252755, guid: f8043e21f451efd4d8c37f6093e863ce, type: 3}
   - {fileID: 275180924923007561, guid: f8043e21f451efd4d8c37f6093e863ce, type: 3}
   - {fileID: -3498927866589285748, guid: f8043e21f451efd4d8c37f6093e863ce, type: 3}
@@ -73,6 +74,7 @@ SpriteAtlas:
   - {fileID: -2086765476746818828, guid: 7851643146c18534dbfb788c9697d562, type: 3}
   - {fileID: 5566842953363755866, guid: 7851643146c18534dbfb788c9697d562, type: 3}
   - {fileID: -7445369939883215787, guid: 7851643146c18534dbfb788c9697d562, type: 3}
+  - {fileID: 21300000, guid: 73d55c63aaf4bec4893fc7b0c28cbab9, type: 3}
   - {fileID: 2313419830122661008, guid: 9c4e0aa48c4514e4fbb53ad6dfbe08d6, type: 3}
   - {fileID: 6349480184285452005, guid: 9c4e0aa48c4514e4fbb53ad6dfbe08d6, type: 3}
   - {fileID: -5951506096933670981, guid: 9c4e0aa48c4514e4fbb53ad6dfbe08d6, type: 3}
@@ -1523,6 +1525,7 @@ SpriteAtlas:
   - {fileID: 5505533137490629192, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
   - {fileID: 7756867850845855559, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
   - {fileID: 5745301174396111285, guid: 42d4188623a7a2245a3fb6df82868b8a, type: 3}
+  - {fileID: 21300000, guid: d192e227f3ec0eb479e25248142ca100, type: 3}
   - {fileID: -464034680190023423, guid: d7e76e78d593a4e4eb647de6adbf2e6a, type: 3}
   - {fileID: -6069640938520168933, guid: d7e76e78d593a4e4eb647de6adbf2e6a, type: 3}
   - {fileID: 1999647984331235364, guid: d7e76e78d593a4e4eb647de6adbf2e6a, type: 3}
@@ -1802,6 +1805,7 @@ SpriteAtlas:
   - {fileID: -8041784067552993899, guid: 8dbe5b1a19ab4c448b018524a06ed508, type: 3}
   - {fileID: 1532286108747742640, guid: 8dbe5b1a19ab4c448b018524a06ed508, type: 3}
   - {fileID: 147799070741053269, guid: 8dbe5b1a19ab4c448b018524a06ed508, type: 3}
+  - {fileID: 21300000, guid: b01548ec6ac13a949b3e85f663c35c81, type: 3}
   - {fileID: -790699523677361007, guid: 6088642e1c6850d42aba6be3c49ed660, type: 3}
   - {fileID: -1580347878817688430, guid: 6088642e1c6850d42aba6be3c49ed660, type: 3}
   - {fileID: -2017960369268865016, guid: 6088642e1c6850d42aba6be3c49ed660, type: 3}
@@ -1866,6 +1870,7 @@ SpriteAtlas:
   - {fileID: -2355267295002078251, guid: 6088642e1c6850d42aba6be3c49ed660, type: 3}
   - {fileID: 21300000, guid: 0b1af04ef7a61fb4da13442065ddec23, type: 3}
   m_PackedSpriteNamesToIndex:
+  - bow
   - Keys_2
   - Common Key
   - Uncommon Key
@@ -1893,6 +1898,7 @@ SpriteAtlas:
   - log_20
   - log_21
   - log_22
+  - magic bar
   - cave_50
   - cave_51
   - cave_52
@@ -3343,6 +3349,7 @@ SpriteAtlas:
   - Ogre_25
   - Ogre_32
   - Ogre_24
+  - magic bottle
   - Inner_48
   - Inner_49
   - Inner_28
@@ -3622,6 +3629,7 @@ SpriteAtlas:
   - modified gfx melee sprites_1
   - modified gfx melee sprites_2
   - modified gfx melee sprites_3
+  - arrow
   - character_14
   - character_17
   - character_58

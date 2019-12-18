@@ -9,15 +9,17 @@ public class Projectile : MonoBehaviour, IDamageable
     public float lifetime = 5;
     public float torque;
     protected float lifetimeTimer;
+    protected Rigidbody2D rb;
     public ParticleSystem particles;
 
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         lifetimeTimer = lifetime;
-        GetComponent<Rigidbody2D>().AddForce(transform.right * moveSpeed, ForceMode2D.Impulse);
-        GetComponent<Rigidbody2D>().AddTorque(torque);
+        rb.AddForce(transform.right.normalized * moveSpeed, ForceMode2D.Impulse);
+        rb.AddTorque(torque);
     }
 
     void Update()
@@ -31,11 +33,14 @@ public class Projectile : MonoBehaviour, IDamageable
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Player player = other.gameObject.GetComponent<Player>();
-        if (player != null)
+        IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            player.TakeDamage(damage, gameObject);
-            Destroy();
+            damageable.TakeDamage(damage, gameObject);
+            if (other.gameObject.GetComponent<Projectile>())
+                return;
+            else
+                Destroy();
         }
         else
         {
@@ -45,7 +50,8 @@ public class Projectile : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(float damageTaken, GameObject damageGiver)
     {
-        throw new System.NotImplementedException();
+        Destroy();
+        //throw new System.NotImplementedException();
     }
 
     public void Destroy()

@@ -8,7 +8,8 @@ public class UIManager : MonoBehaviour
 {
     Player player;
     Inventory playersInventory;
-    TextMeshProUGUI moneyText;
+    public TextMeshProUGUI moneyText;
+    public Slider magicBar;
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -18,16 +19,18 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        moneyText = GameObject.Find("CurrencyText").GetComponent<TextMeshProUGUI>();
-
         player = FindObjectOfType<Player>();
         player.DamageTaken += UpdateHearts;
         player.HealthGiven += UpdateHearts;
         playersInventory = player.GetComponent<Inventory>();
         playersInventory.MoneyChanged += UpdateMoney;
+        playersInventory.AmmoChanged += UpdateAmmo;
+        playersInventory.MagicChanged += UpdateMagic;
         InitHearts();
         UpdateHearts();
         UpdateMoney();
+        InitMagic();
+        UpdateMagic();
     }
 
     void InitHearts()
@@ -37,6 +40,17 @@ public class UIManager : MonoBehaviour
             hearts[i].gameObject.SetActive(true);
             hearts[i].sprite = fullHeart;
         }
+    }
+
+    void InitMagic()
+    {
+        magicBar.maxValue = playersInventory.maxAmmo;
+        magicBar.value = playersInventory.currentAmmo;
+    }
+
+    void InitAmmo()
+    {
+        Debug.LogError("This method has not been implemented yet");
     }
 
     void UpdateHearts()
@@ -61,6 +75,19 @@ public class UIManager : MonoBehaviour
 
     void UpdateMoney()
     {
-        moneyText.text = playersInventory.money.ToString("0000");
+        if(moneyText != null)
+            moneyText.text = playersInventory.money.ToString("0000");
+    }
+
+    void UpdateAmmo()
+    {
+        if (magicBar != null)
+            magicBar.value = playersInventory.currentAmmo;
+    }
+
+    void UpdateMagic()
+    {
+        if(magicBar != null)
+            magicBar.value = playersInventory.currentAmmo;
     }
 }
