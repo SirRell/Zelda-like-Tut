@@ -20,7 +20,7 @@ public class Knockback : MonoBehaviour
         yield return new WaitForSeconds(.15f);
         myRB.velocity = Vector2.zero;
         if(transform.CompareTag("Enemy"))
-            GetComponent<Enemy>().ChangeState(Enemy.EnemyState.Chase);
+            GetComponent<Enemy>().ChangeState(EnemyState.Chase);
         if (transform.CompareTag("Player"))
             GetComponent<Player>().ChangeState(PlayerState.Walk);
     }

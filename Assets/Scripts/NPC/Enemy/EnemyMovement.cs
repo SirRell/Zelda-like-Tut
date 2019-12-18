@@ -2,31 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : Enemy
-{
-    Transform target;
 
+public class EnemyMovement : MonoBehaviour
+{
+    Enemy thisEnemy;
+    Transform target;
+    Animator anim;
+    Patrol patroller;
+    Rigidbody2D rb;
+
+    public float moveSpeed = 2f;
     public float chaseRadius;
     public float attackRadius;
-    public AudioClip wakeUpSound;
+    public AudioClip[] wakeUpSounds;
+
     Vector2 homePosition;
     bool playerInRange = false;
 
     AudioSource audioSource;
 
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
         homePosition = transform.position;
         target = GameObject.FindWithTag("Player").transform;
         audioSource = GetComponent<AudioSource>();
         GetComponentInChildren<CircleCollider2D>().radius = chaseRadius - .15f;
+        thisEnemy = GetComponent<Enemy>();
+        anim = GetComponent<Animator>();
+        patroller = GetComponent<Patrol>();
+        rb = GetComponent<Rigidbody2D>();
 
     }
 
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
         playerInRange = false;
 
         if (moveSpeed == 0)
@@ -69,23 +78,25 @@ public class EnemyMovement : Enemy
                         patroller.patroling = false;
                     }
 
-                    if (currentState == EnemyState.Idle)
+                    if (thisEnemy.currentState == EnemyState.Idle)
                     {
                         float delay = 0;
                         anim.SetTrigger("Wakeup");
-                        if (wakeUpSound != null)
-                            audioSource.PlayOneShot(wakeUpSound);
+                        if (wakeUpSounds.Length > 0)
+                        {
+                            audioSource.PlayOneShot(wakeUpSounds[Random.Range(0, wakeUpSounds.Length)]);
+                        }
                         yield return new WaitForEndOfFrame();
                         AnimatorClipInfo[] clips = anim.GetCurrentAnimatorClipInfo(0);
                         delay = clips[0].clip.length;
                         yield return new WaitForSeconds(delay);
-                        ChangeState(EnemyState.Chase);
+                        thisEnemy.ChangeState(EnemyState.Chase);
                     }
-                    else if (currentState == EnemyState.Patrol)
+                    else if (thisEnemy.currentState == EnemyState.Patrol)
                     {
-                        ChangeState(EnemyState.Chase);
+                        thisEnemy.ChangeState(EnemyState.Chase);
                     }
-                    else if (currentState == EnemyState.Chase)
+                    else if (thisEnemy.currentState == EnemyState.Chase)
                     {
                         Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
                         UpdateAnimation((temp - (Vector2)transform.position).normalized);
@@ -94,15 +105,15 @@ public class EnemyMovement : Enemy
                 }
                 else if (distFromTarget <= attackRadius)
                 {
-                    if (shooter != null)
+                    if (thisEnemy.shooter != null)
                     {
-                        shooter.firing = true;
-                        ChangeState(EnemyState.Attack);
+                        thisEnemy.shooter.firing = true;
+                        thisEnemy.ChangeState(EnemyState.Attack);
                         UpdateAnimation((target.position - transform.position).normalized);
                     }
-                    else if (currentState == EnemyState.Chase)
+                    else if (thisEnemy.currentState == EnemyState.Chase)
                     {
-                        ChangeState(EnemyState.Attack);
+                        thisEnemy.ChangeState(EnemyState.Attack);
                         StartCoroutine(Attack());
                     }
                 }
@@ -112,32 +123,32 @@ public class EnemyMovement : Enemy
             // Far from target, or target is dead
             if (!playerInRange || !target.gameObject.activeInHierarchy)
             {
-                if (currentState != EnemyState.Stagger)
+                if (thisEnemy.currentState != EnemyState.Stagger)
                 {
                     if (patroller != null)
                     {
                         patroller.patroling = true;
-                        if (currentState == EnemyState.Idle)
+                        if (thisEnemy.currentState == EnemyState.Idle)
                         {
                             anim.SetTrigger("Wakeup");
                             yield return new WaitForSeconds(.5f);
                         }
-                        ChangeState(EnemyState.Patrol);
+                        thisEnemy.ChangeState(EnemyState.Patrol);
                         yield return null;
                     }
 
-                    if (shooter != null)
+                    if (thisEnemy.shooter != null)
                     {
-                        shooter.firing = false;
+                        thisEnemy.shooter.firing = false;
                     }
 
                     Vector2 temp = Vector2.MoveTowards(transform.position, homePosition, moveSpeed * Time.deltaTime);
                     rb.MovePosition(temp);
 
-                    if ((Vector2)transform.position == homePosition && currentState != EnemyState.Idle)
+                    if ((Vector2)transform.position == homePosition && thisEnemy.currentState != EnemyState.Idle)
                     {
                         anim.SetTrigger("Sleep");
-                        ChangeState(EnemyState.Idle);
+                        thisEnemy.ChangeState(EnemyState.Idle);
                         yield return null;
                     }
                     UpdateAnimation((temp - (Vector2)transform.position).normalized);
@@ -153,12 +164,12 @@ public class EnemyMovement : Enemy
         float delay = 0;
         Vector2 temp = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
         anim.SetTrigger("Attack");
-        target.GetComponent<IDamageable>().TakeDamage(baseAttack, gameObject);
+        target.GetComponent<IDamageable>().TakeDamage(thisEnemy.baseAttack, gameObject);
         yield return new WaitForEndOfFrame();
         AnimatorClipInfo[] clips = anim.GetCurrentAnimatorClipInfo(0);
         delay = clips[0].clip.length;
         yield return new WaitForSeconds(Mathf.Max(.5f, delay));
-        ChangeState(EnemyState.Chase);
+        thisEnemy.ChangeState(EnemyState.Chase);
         UpdateAnimation((temp - (Vector2)transform.position).normalized);
     }
 

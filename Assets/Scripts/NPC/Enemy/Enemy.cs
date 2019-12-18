@@ -2,38 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyState
+{
+    Idle,
+    Chase,
+    Attack,
+    Stagger,
+    Patrol
+}
+
 public class Enemy : MonoBehaviour, IDamageable
 {
-    public enum EnemyState
-    {
-        Idle,
-        Chase,
-        Attack,
-        Stagger,
-        Patrol
-    }
-    
+
+
+    public EnemyState currentState;
+
     public float maxHealth = 2f;
     public float currHealth;
     //public string enemyName;
     public int baseAttack;
-    public float moveSpeed = 2f;
-    protected EnemyState currentState;
-    protected Rigidbody2D rb;
-    protected Animator anim;
     public GameObject deathFX;
-    protected Patrol patroller;
-    protected FireProjectiles shooter;
-    protected Collectables newItem;
+    [HideInInspector]
+    public FireProjectiles shooter;
+    Collectables newItem;
 
 
     protected virtual void Awake()
     {
         ChangeState(EnemyState.Idle);
         currHealth = maxHealth;
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        patroller = GetComponent<Patrol>();
         shooter = GetComponent<FireProjectiles>();
         newItem = GetComponent<Collectables>();
     }
