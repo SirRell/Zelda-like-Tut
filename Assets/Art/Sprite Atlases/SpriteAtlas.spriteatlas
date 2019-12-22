@@ -42,7 +42,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 6b839cecf14071e4c9b14de007e3cca1, type: 3}
-    totalSpriteSurfaceArea: 555159
+    totalSpriteSurfaceArea: 567352
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -74,6 +74,7 @@ SpriteAtlas:
   - {fileID: -2086765476746818828, guid: 7851643146c18534dbfb788c9697d562, type: 3}
   - {fileID: 5566842953363755866, guid: 7851643146c18534dbfb788c9697d562, type: 3}
   - {fileID: -7445369939883215787, guid: 7851643146c18534dbfb788c9697d562, type: 3}
+  - {fileID: 21300000, guid: 717176f2d0fbb1e4fbb6009c83982278, type: 3}
   - {fileID: 21300000, guid: 73d55c63aaf4bec4893fc7b0c28cbab9, type: 3}
   - {fileID: 2313419830122661008, guid: 9c4e0aa48c4514e4fbb53ad6dfbe08d6, type: 3}
   - {fileID: 6349480184285452005, guid: 9c4e0aa48c4514e4fbb53ad6dfbe08d6, type: 3}
@@ -1899,6 +1900,7 @@ SpriteAtlas:
   - log_20
   - log_21
   - log_22
+  - 1
   - magic bar
   - cave_50
   - cave_51
