@@ -189,7 +189,8 @@ MonoBehaviour:
   moveSpeed: 2
   chaseRadius: 3
   attackRadius: 0.96
-  wakeUpSound: {fileID: 8300000, guid: 24db8cafc7a0e5a469061ea9b5fd04ba, type: 3}
+  wakeUpSounds:
+  - {fileID: 8300000, guid: 24db8cafc7a0e5a469061ea9b5fd04ba, type: 3}
 --- !u!114 &3038420100944881231
 MonoBehaviour:
   m_ObjectHideFlags: 0

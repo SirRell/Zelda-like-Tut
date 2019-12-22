@@ -8,14 +8,14 @@ public class UIManager : MonoBehaviour
 {
     Player player;
     Inventory playersInventory;
+    public GameObject heartContainer;
     public TextMeshProUGUI moneyText;
     public Slider magicBar;
 
-    public Image[] hearts;
+    public List<Image> hearts;
     public Sprite fullHeart;
     public Sprite halfHeart;
     public Sprite emptyHeart;
-    public float totalHearts = 3;
 
     private void Start()
     {
@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
         playersInventory.MoneyChanged += UpdateMoney;
         playersInventory.AmmoChanged += UpdateAmmo;
         playersInventory.MagicChanged += UpdateMagic;
+        playersInventory.HeartAmountChanged += UpdateHeartContainer;
         InitHearts();
         UpdateHearts();
         UpdateMoney();
@@ -35,10 +36,18 @@ public class UIManager : MonoBehaviour
 
     void InitHearts()
     {
-        for (int i = 0; i < totalHearts; i++)
+        int maximumHearts = (int)player.maxHealth / 2;
+        for (int i = 0; i < maximumHearts; i++)
         {
-            hearts[i].gameObject.SetActive(true);
-            hearts[i].sprite = fullHeart;
+            if(i >= hearts.Count)
+            {
+                GameObject heartImage = Instantiate(new GameObject("HeartImage"), heartContainer.transform);
+                Image image = heartImage.AddComponent<Image>();
+                image.sprite = fullHeart;
+                RectTransform t = heartImage.GetComponent<RectTransform>();
+                t.sizeDelta = new Vector2(30, 30); //Width & Height of the RectTransform
+                hearts.Add(image);
+            }
         }
     }
 
@@ -56,7 +65,7 @@ public class UIManager : MonoBehaviour
     void UpdateHearts()
     {
         float tempHealth = player.currHealth / 2;
-        for (int currentHeart = 0; currentHeart < totalHearts; currentHeart++)
+        for (int currentHeart = 0; currentHeart < hearts.Count; currentHeart++)
         {
             if(currentHeart <= tempHealth - 1)
             {
@@ -71,6 +80,12 @@ public class UIManager : MonoBehaviour
                 hearts[currentHeart].sprite = halfHeart;
             }
         }
+    }
+
+    void UpdateHeartContainer()
+    {
+        InitHearts();
+        UpdateHearts();
     }
 
     void UpdateMoney()

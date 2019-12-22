@@ -88,7 +88,7 @@ TextureImporter:
     second: objects_27
   - first:
       213: 2002165265138813586
-    second: Fire12
+    second: Fire11
   - first:
       213: 5197925540072060383
     second: objects_29
@@ -166,7 +166,7 @@ TextureImporter:
     second: Fire9
   - first:
       213: -5262628193677242302
-    second: Fire11
+    second: Fire10
   - first:
       213: 901927284399968204
     second: SmokeExplode7
@@ -220,7 +220,7 @@ TextureImporter:
     second: objects_71
   - first:
       213: -627648684984592141
-    second: objects_72
+    second: PotBreak4
   - first:
       213: 7597474578557255370
     second: objects_73
@@ -247,16 +247,16 @@ TextureImporter:
     second: 3Dot
   - first:
       213: 3487095783347953447
-    second: objects_81
+    second: Pot
   - first:
       213: 5109969820934194805
-    second: objects_82
+    second: PotBreak3
   - first:
       213: -3980494300707121562
-    second: objects_83
+    second: PotBreak2
   - first:
       213: -8006292867793706052
-    second: objects_84
+    second: PotBreak1
   - first:
       213: -8888418204731768549
     second: objects_85
@@ -307,22 +307,22 @@ TextureImporter:
     second: QuestionMark
   - first:
       213: -3555468057966329373
-    second: objects_101
+    second: HeartContainer1
   - first:
       213: 4571676322455285884
-    second: objects_102
+    second: HeartContainer2
   - first:
       213: 5513264443485517607
-    second: objects_103
+    second: HeartContainer3
   - first:
       213: 1529650774630179173
-    second: objects_104
+    second: HeartContainer4
   - first:
       213: 3260465681249809347
-    second: objects_105
+    second: Lever_Left
   - first:
       213: 351992477344869309
-    second: objects_106
+    second: Lever_Right
   - first:
       213: -2955328036293922735
     second: objects_107
@@ -434,6 +434,9 @@ TextureImporter:
   - first:
       213: 4182620505961097661
     second: Coin3
+  - first:
+      213: 4001564731830628026
+    second: HeartContainerIcon
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -1493,7 +1496,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire11
+      name: Fire10
       rect:
         serializedVersion: 2
         x: 209
@@ -1829,7 +1832,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_72
+      name: PotBreak4
       rect:
         serializedVersion: 2
         x: 192
@@ -1955,7 +1958,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_81
+      name: Pot
       rect:
         serializedVersion: 2
         x: 63
@@ -2102,7 +2105,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_101
+      name: HeartContainer1
       rect:
         serializedVersion: 2
         x: 66
@@ -2123,12 +2126,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_102
+      name: HeartContainer2
       rect:
         serializedVersion: 2
-        x: 83
+        x: 82
         y: 177
-        width: 11
+        width: 12
         height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2144,12 +2147,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_103
+      name: HeartContainer3
       rect:
         serializedVersion: 2
-        x: 100
+        x: 98
         y: 177
-        width: 10
+        width: 12
         height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2165,12 +2168,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_104
+      name: HeartContainer4
       rect:
         serializedVersion: 2
-        x: 115
+        x: 114
         y: 177
-        width: 11
+        width: 12
         height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2186,7 +2189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_105
+      name: Lever_Left
       rect:
         serializedVersion: 2
         x: 32
@@ -2207,7 +2210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_106
+      name: Lever_Right
       rect:
         serializedVersion: 2
         x: 49
@@ -2921,7 +2924,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_82
+      name: PotBreak3
       rect:
         serializedVersion: 2
         x: 160
@@ -2942,7 +2945,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_83
+      name: PotBreak2
       rect:
         serializedVersion: 2
         x: 128
@@ -2963,7 +2966,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_84
+      name: PotBreak1
       rect:
         serializedVersion: 2
         x: 96
@@ -3005,7 +3008,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire12
+      name: Fire11
       rect:
         serializedVersion: 2
         x: 225
@@ -3084,6 +3087,27 @@ TextureImporter:
       bones: []
       spriteID: 76bf77d0e5a34694da9a9416cd5c9891
       internalID: 4182620505961097661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartContainerIcon
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 178
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cde8c45b3d1c47e49b6af83d2a28a8c2
+      internalID: 4001564731830628026
       vertices: []
       indices: 
       edges: []

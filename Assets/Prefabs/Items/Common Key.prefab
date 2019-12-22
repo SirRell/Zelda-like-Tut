@@ -102,3 +102,4 @@ MonoBehaviour:
   type: 0
   itemName: Key
   itemDescription: It's a small key. It's usually used to unlock locked things.
+  value: 1

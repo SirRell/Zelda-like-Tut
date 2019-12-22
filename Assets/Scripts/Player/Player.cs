@@ -16,7 +16,7 @@ public class Player : MonoBehaviour, IDamageable
 {
     protected Rigidbody2D rb;
     public PlayerState currentState;
-    public float maxHealth = 5f;
+    public float maxHealth = 6f;
     public float currHealth;
     public float strength = 1f;
     public event Action DamageTaken;
@@ -33,7 +33,10 @@ public class Player : MonoBehaviour, IDamageable
         else
             currHealth = maxHealth;
 
-        if(InfoManager.Instance.NewPlayerPosition != Vector2.zero)
+        if (InfoManager.Instance.PlayerMaxHealth != 0)
+            maxHealth = InfoManager.Instance.PlayerMaxHealth;
+
+        if (InfoManager.Instance.NewPlayerPosition != Vector2.zero)
             transform.position = InfoManager.Instance.NewPlayerPosition;
     }
 
@@ -48,7 +51,6 @@ public class Player : MonoBehaviour, IDamageable
     public void TakeDamage(float damageTaken, GameObject damageGiver)
     {
         currHealth -= damageTaken;
-        //sounds.PlayClip(sounds.playerDamaged);
         SoundsManager.instance.PlayClip(SoundsManager.Sound.PlayerDamaged);
         DamageTaken?.Invoke();
         if (currHealth <= 0f)
@@ -69,7 +71,17 @@ public class Player : MonoBehaviour, IDamageable
     public void Heal(int healthGiven)
     {
         currHealth += healthGiven;
-        currHealth = Mathf.Clamp(currHealth, 0, maxHealth);
+        //Find out if the max health is even or not using modulo operator
+        if (maxHealth%2 == 0) //Is even, because something divided by two without remainder is even.
+        {
+            currHealth = Mathf.Clamp(currHealth, 0, maxHealth);
+        }
+        else
+        {
+            //Is odd. The heart isn't showing, so it shouldn't be filled
+            currHealth = Mathf.Clamp(currHealth, 0, maxHealth - 1); 
+        }
+
         HealthGiven?.Invoke();
     }
 

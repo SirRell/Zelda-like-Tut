@@ -22,7 +22,8 @@ public class Inventory : MonoBehaviour
     public event Action MoneyChanged;
     public event Action AmmoChanged;
     public event Action MagicChanged;
-    
+    public event Action HeartAmountChanged;
+
 
     private void Start()
     {
@@ -80,7 +81,6 @@ public class Inventory : MonoBehaviour
             case ItemType.Heart:
                 Player player = GetComponent<Player>();
                 player.Heal(amount);
-                //itemToReceive.Collect(this);
                 break;
             case ItemType.Money:
                 money += amount;
@@ -96,6 +96,10 @@ public class Inventory : MonoBehaviour
                 break;
             case ItemType.MagicBottle:
                 MagicChanged?.Invoke();
+                break;
+            case ItemType.HeartContainer:
+                GetComponent<Player>().maxHealth += amount;
+                HeartAmountChanged?.Invoke();
                 break;
             default:
                 break;
@@ -130,9 +134,10 @@ public class Inventory : MonoBehaviour
             case ItemType.Stick:
                 break;
             case ItemType.Arrow:
-
                 currentAmmo -= amount;
                 AmmoChanged?.Invoke();
+                break;
+            case ItemType.HeartContainer:
                 break;
             default:
                 break;
