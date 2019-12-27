@@ -180,12 +180,12 @@ PrefabInstance:
     - target: {fileID: 8309873992670466187, guid: 273c5265284a97b4ab67e4c1da14443a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 8309873992670466187, guid: 273c5265284a97b4ab67e4c1da14443a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.5
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 8309873992670466187, guid: 273c5265284a97b4ab67e4c1da14443a,
         type: 3}
@@ -41773,7 +41773,7 @@ PrefabInstance:
     - target: {fileID: 4986251393960519381, guid: 01d4ddc6f7a5c2141bb1281e609e004a,
         type: 3}
       propertyPath: m_Name
-      value: Graveyard (1)
+      value: CaveEntrance
       objectReference: {fileID: 0}
     - target: {fileID: 4986251393960519383, guid: 01d4ddc6f7a5c2141bb1281e609e004a,
         type: 3}
@@ -56094,11 +56094,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2586500831995398133, guid: 01d4ddc6f7a5c2141bb1281e609e004a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01d4ddc6f7a5c2141bb1281e609e004a, type: 3}

@@ -15,6 +15,7 @@ public enum PlayerState
 public class Player : MonoBehaviour, IDamageable
 {
     protected Rigidbody2D rb;
+    SpriteRenderer sr;
     public PlayerState currentState;
     public float maxHealth = 6f;
     public float currHealth;
@@ -22,11 +23,17 @@ public class Player : MonoBehaviour, IDamageable
     public event Action DamageTaken;
     public event Action HealthGiven;
     public GameObject deathFX;
+    public int numberOfFlashes;
+    public Color flashColor;
+    Color originalColor;
+    bool invulnerable = false;
 
     protected virtual void Start()
     {
         ChangeState(PlayerState.Walk);
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
 
         if (InfoManager.Instance.PlayerHealth != 0)
             currHealth = InfoManager.Instance.PlayerHealth;
@@ -50,6 +57,9 @@ public class Player : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damageTaken, GameObject damageGiver)
     {
+        if (invulnerable) return;
+
+        StartCoroutine(IFrames());
         currHealth -= damageTaken;
         SoundsManager.instance.PlayClip(SoundsManager.Sound.PlayerDamaged);
         DamageTaken?.Invoke();
@@ -66,6 +76,21 @@ public class Player : MonoBehaviour, IDamageable
                 GetComponent<PlayerMovement>().ChangeState(PlayerState.Stagger);
             }
         }
+    }
+
+    IEnumerator IFrames()
+    {
+        invulnerable = true;
+        int temp = 0;
+        while(temp < numberOfFlashes)
+        {
+            sr.color = flashColor;
+            yield return new WaitForSeconds(.1f);
+            sr.color = originalColor;
+            yield return new WaitForSeconds(.1f);
+            temp++;
+        }
+        invulnerable = false;
     }
 
     public void Heal(int healthGiven)

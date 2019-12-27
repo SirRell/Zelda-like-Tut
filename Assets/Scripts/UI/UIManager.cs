@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     Player player;
     Inventory playersInventory;
     public GameObject heartContainer;
+    public GameObject pausePanel;
     public TextMeshProUGUI moneyText;
     public Slider magicBar;
 
@@ -32,6 +33,21 @@ public class UIManager : MonoBehaviour
         UpdateMoney();
         InitMagic();
         UpdateMagic();
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Pause"))
+        {
+            if (!pausePanel.activeInHierarchy)
+            {
+                Pause();
+            }
+            else
+            {
+                UnPause();
+            }
+        }
     }
 
     void InitHearts()
@@ -104,5 +120,22 @@ public class UIManager : MonoBehaviour
     {
         if(magicBar != null)
             magicBar.value = playersInventory.currentAmmo;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
+    }
+
+    public void UnPause()
+    {
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
+    }
+
+    public void Quit()
+    {
+        print("Quit Game");
     }
 }
