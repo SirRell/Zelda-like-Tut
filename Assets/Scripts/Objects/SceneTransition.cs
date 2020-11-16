@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour
 {
     public string sceneToLoad;
-
     public Vector2 playerStartPosition;
 
     public GameObject fadeOutImage;

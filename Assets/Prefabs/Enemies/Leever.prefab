@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 9140864562462358564}
   - component: {fileID: 5385980371222727059}
   - component: {fileID: 2411953069786777054}
+  - component: {fileID: 6103129896649266742}
   - component: {fileID: 2888827835359196973}
   - component: {fileID: 3038420100944881231}
   - component: {fileID: 7470999648813987927}
@@ -155,6 +156,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6103129896649266742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353135991401218200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236d0c99ecc1cd544a2d2975648003e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  maxHealth: 2
+  currHealth: 0
+  baseAttack: 1
+  deathFX: {fileID: 2009807577534706467, guid: c428e7811fffcb84ca688099d387f77e, type: 3}
+  shooter: {fileID: 0}
 --- !u!114 &2888827835359196973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,14 +186,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866db0838ffe1a24e8af8acfcc5364b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
-  currHealth: 0
-  baseAttack: 1
   moveSpeed: 2
-  deathFX: {fileID: 2009807577534706467, guid: c428e7811fffcb84ca688099d387f77e, type: 3}
   chaseRadius: 3
   attackRadius: 0.96
-  wakeUpSound: {fileID: 8300000, guid: 24db8cafc7a0e5a469061ea9b5fd04ba, type: 3}
+  wakeUpSounds:
+  - {fileID: 8300000, guid: 24db8cafc7a0e5a469061ea9b5fd04ba, type: 3}
 --- !u!114 &3038420100944881231
 MonoBehaviour:
   m_ObjectHideFlags: 0

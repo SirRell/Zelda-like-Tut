@@ -12,7 +12,8 @@ public enum ItemType
     Bomb,
     Stick,
     Arrow,
-    MagicBottle
+    MagicBottle,
+    HeartContainer
 }
 
 public class Item : MonoBehaviour

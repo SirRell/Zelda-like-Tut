@@ -7,6 +7,7 @@ public class InfoManager : MonoBehaviour
     static InfoManager instance;
     public static InfoManager Instance { get { return instance; } }
     public Vector2 NewPlayerPosition { get; set; }
+    public float PlayerMaxHealth { get; set; }
     public float PlayerHealth { get; set; }
     public float PlayerMagic { get; set; }
     public int AmmoLeft { get; set; }
@@ -40,9 +41,10 @@ public class InfoManager : MonoBehaviour
 
     public void UpdateStats()
     {
-        GameObject player = GameObject.FindWithTag("Player");
+        Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
         Inventory playerInventory = player.GetComponent<Inventory>();
-        PlayerHealth = player.GetComponent<Player>().currHealth;
+        PlayerMaxHealth = player.maxHealth;
+        PlayerHealth = player.currHealth;
         items = playerInventory.MyItems;
         CommonKeys = playerInventory.commonKeys;
         UnCommonKeys = playerInventory.uncommonKeys;

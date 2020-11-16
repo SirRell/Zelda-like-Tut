@@ -45,10 +45,6 @@ public class Room : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             gameObjects.Add(transform.GetChild(i).gameObject);
-            //if (gameObjects[i].CompareTag("VCam"))
-            //{
-
-            //}
             gameObjects[i].SetActive(playerPresent);
         }
     }

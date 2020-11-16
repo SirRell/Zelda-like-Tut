@@ -131,6 +131,8 @@ MonoBehaviour:
   currHealth: 0
   strength: 1
   deathFX: {fileID: 2009807577534706467, guid: c428e7811fffcb84ca688099d387f77e, type: 3}
+  numberOfFlashes: 5
+  flashColor: {r: 0.8901961, g: 0.41568628, b: 0.41568628, a: 1}
   speed: 4
 --- !u!114 &7304385701115469855
 MonoBehaviour:

@@ -86,6 +86,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CM vcam
       objectReference: {fileID: 0}
+    - target: {fileID: 78336529307040579, guid: 7eeacf88124126f4da52fb03b035f8c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 78336529307040590, guid: 7eeacf88124126f4da52fb03b035f8c5,
         type: 3}
       propertyPath: m_LocalPosition.x
